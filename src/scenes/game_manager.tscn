@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtthp3571n54c"]
+
+[ext_resource type="Script" path="res://scripts/imported/StateMachine/FiniteStateMachine.gd" id="1_i67ul"]
+[ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
+
+[node name="GameManager" type="Node2D"]
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("1_i67ul")
+root = NodePath("..")
+
+[node name="Start" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_8cem0")
+
+[node name="Toasting" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_8cem0")
+
+[node name="Airborne" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_8cem0")
+
+[node name="Lose" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_8cem0")
+
+[node name="Win" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("2_8cem0")
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ObjectManager" type="Node2D" parent="."]
