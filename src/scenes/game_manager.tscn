@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/FiniteStateMachine.gd" id="1_i67ul"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
-[ext_resource type="Script" path="res://scenes/Hand_FSM.gd" id="3_71i5o"]
+[ext_resource type="Script" path="res://scripts/player/Hand_FSM.gd" id="3_71i5o"]
 
 [sub_resource type="ConcavePolygonShape2D" id="ConcavePolygonShape2D_8tnbq"]
 
