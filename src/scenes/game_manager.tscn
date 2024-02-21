@@ -1,34 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=10 format=3 uid="uid://dtthp3571n54c"]
 
-[ext_resource type="Script" path="res://scripts/imported/StateMachine/FiniteStateMachine.gd" id="1_i67ul"]
+[ext_resource type="Script" path="res://scenes/GameStateMachine.gd" id="1_b1o84"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
+[ext_resource type="Script" path="res://scripts/game/GameStartState.gd" id="2_ssri1"]
 [ext_resource type="Script" path="res://scripts/player/Hand_FSM.gd" id="3_71i5o"]
 [ext_resource type="Texture2D" uid="uid://cnawhq8rmn22s" path="res://visual/legacy/background.png" id="3_faw3r"]
 [ext_resource type="Script" path="res://scripts/player/Hand.gd" id="4_jksnh"]
 [ext_resource type="Texture2D" uid="uid://dmodob157w58k" path="res://visual/legacy/hand.png" id="6_7kh41"]
+[ext_resource type="Script" path="res://scripts/game/GameToastingState.gd" id="3_ul2d7"]
+[ext_resource type="Script" path="res://scripts/game/GameAirborneState.gd" id="4_a8hcl"]
+[ext_resource type="Script" path="res://scripts/game/GameLoseState.gd" id="5_pt4ww"]
+[ext_resource type="Script" path="res://scripts/game/GameWinState.gd" id="6_35j0c"]
 
 [sub_resource type="ConcavePolygonShape2D" id="ConcavePolygonShape2D_8tnbq"]
 
 [node name="GameManager" type="Node2D"]
 
-[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("root")]
-script = ExtResource("1_i67ul")
-root = NodePath("..")
+[node name="GameStateMachine" type="Node" parent="."]
+script = ExtResource("1_b1o84")
 
-[node name="Start" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("2_8cem0")
+[node name="Start" type="Node" parent="GameStateMachine"]
+script = ExtResource("2_ssri1")
 
-[node name="Toasting" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("2_8cem0")
+[node name="Toasting" type="Node" parent="GameStateMachine"]
+script = ExtResource("3_ul2d7")
 
-[node name="Airborne" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("2_8cem0")
+[node name="Airborne" type="Node" parent="GameStateMachine"]
+script = ExtResource("4_a8hcl")
 
-[node name="Lose" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("2_8cem0")
+[node name="Lose" type="Node" parent="GameStateMachine"]
+script = ExtResource("5_pt4ww")
 
-[node name="Win" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("2_8cem0")
+[node name="Win" type="Node" parent="GameStateMachine"]
+script = ExtResource("6_35j0c")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
