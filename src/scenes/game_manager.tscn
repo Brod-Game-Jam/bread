@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cnawhq8rmn22s" path="res://visual/legacy/background.png" id="3_faw3r"]
 [ext_resource type="Script" path="res://scripts/player/Hand.gd" id="4_jksnh"]
 [ext_resource type="Texture2D" uid="uid://dmodob157w58k" path="res://visual/legacy/hand.png" id="6_7kh41"]
-[ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
+[ext_resource type="Texture2D" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_42mhf"]
@@ -21,8 +21,9 @@ size = Vector2(1380, 40)
 
 [node name="GameManager" type="Node2D"]
 
-[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("root")]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "root")]
 script = ExtResource("1_i67ul")
+current_state = NodePath("Start")
 root = NodePath("..")
 
 [node name="Start" type="Node" parent="FiniteStateMachine"]
