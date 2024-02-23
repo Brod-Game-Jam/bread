@@ -1,13 +1,98 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=19 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/FiniteStateMachine.gd" id="1_i67ul"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
 [ext_resource type="Script" path="res://scripts/player/Hand_FSM.gd" id="3_71i5o"]
 [ext_resource type="Texture2D" uid="uid://cnawhq8rmn22s" path="res://visual/legacy/background.png" id="3_faw3r"]
 [ext_resource type="Script" path="res://scripts/player/Hand.gd" id="4_jksnh"]
-[ext_resource type="Texture2D" uid="uid://dmodob157w58k" path="res://visual/legacy/hand.png" id="6_7kh41"]
-[ext_resource type="Texture2D" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
+[ext_resource type="Script" path="res://scenes/HandAnimation.gd" id="6_jxjrx"]
+[ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
+[ext_resource type="Texture2D" uid="uid://gcvsej6uhdvf" path="res://visual/hand_sheet.png" id="7_18hej"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
+
+[sub_resource type="Animation" id="Animation_b0ikg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hm5cj"]
+resource_name = "slap_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_blg55"]
+resource_name = "slap_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vtlne"]
+resource_name = "slap_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_wrguj"]
+resource_name = "slap_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l011y"]
+_data = {
+"RESET": SubResource("Animation_b0ikg"),
+"slap_down": SubResource("Animation_hm5cj"),
+"slap_left": SubResource("Animation_blg55"),
+"slap_right": SubResource("Animation_vtlne"),
+"slap_up": SubResource("Animation_wrguj")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_42mhf"]
 radius = 25.0
@@ -92,10 +177,16 @@ script = ExtResource("2_8cem0")
 script = ExtResource("2_8cem0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ObjectManager/Hand"]
+libraries = {
+"": SubResource("AnimationLibrary_l011y")
+}
+script = ExtResource("6_jxjrx")
 
 [node name="HandSprite" type="Sprite2D" parent="ObjectManager/Hand"]
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("6_7kh41")
+texture = ExtResource("7_18hej")
+hframes = 6
+vframes = 4
 
 [node name="RigidBody2D" type="RigidBody2D" parent="ObjectManager/Hand"]
 position = Vector2(-580, -350)
