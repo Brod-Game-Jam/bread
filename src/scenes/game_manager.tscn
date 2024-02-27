@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scripts/player/Hand_FSM.gd" id="3_71i5o"]
 [ext_resource type="Texture2D" uid="uid://cnawhq8rmn22s" path="res://visual/legacy/background.png" id="3_faw3r"]
 [ext_resource type="Script" path="res://scripts/player/Hand.gd" id="4_jksnh"]
+[ext_resource type="Script" path="res://scripts/player/Active.gd" id="6_8erbr"]
 [ext_resource type="Script" path="res://scenes/HandAnimation.gd" id="6_jxjrx"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
@@ -127,9 +128,8 @@ _data = {
 "unpinch": SubResource("Animation_g2i4m")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_42mhf"]
-radius = 25.0
-height = 89.4268
+[sub_resource type="CircleShape2D" id="CircleShape2D_5e4wd"]
+radius = 77.3888
 
 [sub_resource type="Animation" id="Animation_v43t8"]
 resource_name = "bread_launch"
@@ -244,6 +244,7 @@ offset = Vector2(576, 324)
 [node name="ObjectManager" type="Node2D" parent="."]
 
 [node name="Hand" type="Node2D" parent="ObjectManager"]
+z_index = 1
 position = Vector2(744, 370)
 script = ExtResource("4_jksnh")
 
@@ -253,7 +254,7 @@ current_state = NodePath("Active")
 root = NodePath("..")
 
 [node name="Active" type="Node" parent="ObjectManager/Hand/FiniteStateMachine"]
-script = ExtResource("2_8cem0")
+script = ExtResource("6_8erbr")
 
 [node name="Grabbed" type="Node" parent="ObjectManager/Hand/FiniteStateMachine"]
 script = ExtResource("2_8cem0")
@@ -273,13 +274,14 @@ texture = ExtResource("7_oqvgj")
 hframes = 6
 vframes = 6
 
-[node name="RigidBody2D" type="RigidBody2D" parent="ObjectManager/Hand"]
+[node name="Area2D" type="Area2D" parent="ObjectManager/Hand"]
 position = Vector2(-580, -350)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/Hand/RigidBody2D"]
-position = Vector2(575, 347)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/Hand/Area2D"]
+position = Vector2(580, 349)
 rotation = -1.04022
-shape = SubResource("CapsuleShape2D_42mhf")
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_5e4wd")
 
 [node name="Toaster" type="Node2D" parent="ObjectManager"]
 position = Vector2(-125, 193)
@@ -315,3 +317,6 @@ position = Vector2(593, 629)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/TempFloor/StaticBody2D"]
 shape = SubResource("RectangleShape2D_eurva")
+
+[connection signal="body_entered" from="ObjectManager/Hand/Area2D" to="ObjectManager/Hand/FiniteStateMachine/Active" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="ObjectManager/Hand/Area2D" to="ObjectManager/Hand/FiniteStateMachine/Active" method="_on_area_2d_body_exited"]
