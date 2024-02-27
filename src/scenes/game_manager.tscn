@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=26 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/FiniteStateMachine.gd" id="1_i67ul"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
 [ext_resource type="Texture2D" uid="uid://cuig638wnq0li" path="res://visual/sprites/combined_hand_sheet.png" id="7_oqvgj"]
+[ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
 
 [sub_resource type="Animation" id="Animation_b0ikg"]
 length = 0.001
@@ -85,18 +86,102 @@ tracks/0/keys = {
 "values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_s05a0"]
+resource_name = "pinch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_g2i4m"]
+resource_name = "unpinch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l011y"]
 _data = {
 "RESET": SubResource("Animation_b0ikg"),
+"pinch": SubResource("Animation_s05a0"),
 "slap_down": SubResource("Animation_hm5cj"),
 "slap_left": SubResource("Animation_blg55"),
 "slap_right": SubResource("Animation_vtlne"),
-"slap_up": SubResource("Animation_wrguj")
+"slap_up": SubResource("Animation_wrguj"),
+"unpinch": SubResource("Animation_g2i4m")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_42mhf"]
 radius = 25.0
 height = 89.4268
+
+[sub_resource type="Animation" id="Animation_v43t8"]
+resource_name = "bread_launch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(1, 0), Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2mtst"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7h3es"]
+resource_name = "bread_consume"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_774qp"]
+_data = {
+"RESET": SubResource("Animation_2mtst"),
+"bread_consume": SubResource("Animation_7h3es"),
+"bread_launch": SubResource("Animation_v43t8")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45d6x"]
 size = Vector2(92.25, 85.375)
@@ -198,6 +283,18 @@ shape = SubResource("CapsuleShape2D_42mhf")
 
 [node name="Toaster" type="Node2D" parent="ObjectManager"]
 position = Vector2(-125, 193)
+
+[node name="Sprite2D" type="Sprite2D" parent="ObjectManager/Toaster"]
+position = Vector2(694, 369)
+scale = Vector2(0.147481, 0.147481)
+texture = ExtResource("8_dxmu3")
+hframes = 4
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ObjectManager/Toaster"]
+libraries = {
+"": SubResource("AnimationLibrary_774qp")
+}
 
 [node name="Bread" type="RigidBody2D" parent="ObjectManager"]
 position = Vector2(434, 366)
