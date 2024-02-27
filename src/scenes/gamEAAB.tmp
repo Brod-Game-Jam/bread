@@ -164,7 +164,7 @@ script = ExtResource("4_jksnh")
 
 [node name="FiniteStateMachine" type="Node" parent="ObjectManager/Hand" node_paths=PackedStringArray("current_state", "root")]
 script = ExtResource("3_71i5o")
-current_state = NodePath("Active")
+current_state = NodePath("Grabbed")
 root = NodePath("..")
 
 [node name="Active" type="Node" parent="ObjectManager/Hand/FiniteStateMachine"]
