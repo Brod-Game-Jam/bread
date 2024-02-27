@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://scripts/player/Hand.gd" id="4_jksnh"]
 [ext_resource type="Script" path="res://scenes/HandAnimation.gd" id="6_jxjrx"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
-[ext_resource type="Texture2D" uid="uid://gcvsej6uhdvf" path="res://visual/hand_sheet.png" id="7_18hej"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
+[ext_resource type="Texture2D" uid="uid://cuig638wnq0li" path="res://visual/sprites/combined_hand_sheet.png" id="7_oqvgj"]
 
 [sub_resource type="Animation" id="Animation_b0ikg"]
 length = 0.001
@@ -184,9 +184,9 @@ script = ExtResource("6_jxjrx")
 
 [node name="HandSprite" type="Sprite2D" parent="ObjectManager/Hand"]
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("7_18hej")
+texture = ExtResource("7_oqvgj")
 hframes = 6
-vframes = 4
+vframes = 6
 
 [node name="RigidBody2D" type="RigidBody2D" parent="ObjectManager/Hand"]
 position = Vector2(-580, -350)
