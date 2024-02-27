@@ -1,5 +1,5 @@
 extends State
-class_name GameStartState
+class_name GameEatState
 
 func _enter_state():
 	pass
