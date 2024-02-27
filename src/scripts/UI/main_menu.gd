@@ -3,9 +3,13 @@ extends MarginContainer
 @onready var labels = $Main
 @onready var settings = $Settings
 
+func _on_return_pressed():
+	labels.visible = true
+	settings.visible = false
+
 func _on_new_game_pressed():
 	print("New Game")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://scenes/game_manager.tscn")
 
 func _on_settings_pressed():

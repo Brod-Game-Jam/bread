@@ -128,9 +128,13 @@ script = ExtResource("2_8cem0")
 
 [node name="Visual" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Background" type="Control" parent="Visual"]
 custom_minimum_size = Vector2(0.955, 1.22)
@@ -143,15 +147,20 @@ position = Vector2(576.444, 325.5)
 scale = Vector2(0.249614, 0.249614)
 texture = ExtResource("3_faw3r")
 
-[node name="UI" type="MarginContainer" parent="Visual"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="GUI" type="MarginContainer" parent="Visual"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
 
-[node name="HeatMeter" type="Control" parent="Visual/UI"]
+[node name="HeatMeter" type="Control" parent="Visual/GUI"]
 layout_mode = 2
 
-[node name="Lives" type="Control" parent="Visual/UI"]
+[node name="Lives" type="Control" parent="Visual/GUI"]
 layout_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
