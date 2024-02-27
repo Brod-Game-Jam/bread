@@ -15,6 +15,10 @@ func _ready():
 		actual_size += 1
 		child._initialize_state(self, root)
 	states.resize(actual_size)
+	if not current_state:
+		current_state = get_child(0)
+		if not get_child(0):
+			push_error("No children detected")
 	_change_state(current_state)
 
 func _change_state(new_state: State):
