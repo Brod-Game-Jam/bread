@@ -3,8 +3,8 @@ extends AnimationPlayer
 func _ready():
 	pass
 	## RETRIEVE SIGNAL ORIGIN 
-	## var hand = get_node("../FiniteStateMachine/Active")
-	## hand.connect("strike",play_anim)
+	var hand = get_node("../FiniteStateMachine/Active")
+	hand.connect("strike",play_anim)
 	
 func play_anim(slap_vector):
 	stop()
