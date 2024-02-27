@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Bread"
-run/main_scene="res://scenes/game_manager.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://visual/legacy/bread_128.png"
 
 [display]
 
