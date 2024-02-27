@@ -1,16 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=19 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/FiniteStateMachine.gd" id="1_i67ul"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
 [ext_resource type="Script" path="res://scripts/player/Hand_FSM.gd" id="3_71i5o"]
 [ext_resource type="Texture2D" uid="uid://cnawhq8rmn22s" path="res://visual/legacy/background.png" id="3_faw3r"]
 [ext_resource type="Script" path="res://scripts/player/Hand.gd" id="4_jksnh"]
-[ext_resource type="Script" path="res://scripts/player/Active.gd" id="6_8erbr"]
 [ext_resource type="Script" path="res://scenes/HandAnimation.gd" id="6_jxjrx"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
+[ext_resource type="Texture2D" uid="uid://gcvsej6uhdvf" path="res://visual/hand_sheet.png" id="7_18hej"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
-[ext_resource type="Texture2D" uid="uid://cuig638wnq0li" path="res://visual/sprites/combined_hand_sheet.png" id="7_oqvgj"]
-[ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
 
 [sub_resource type="Animation" id="Animation_b0ikg"]
 length = 0.001
@@ -87,101 +85,18 @@ tracks/0/keys = {
 "values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_s05a0"]
-resource_name = "pinch"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HandSprite:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4)]
-}
-
-[sub_resource type="Animation" id="Animation_g2i4m"]
-resource_name = "unpinch"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HandSprite:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l011y"]
 _data = {
 "RESET": SubResource("Animation_b0ikg"),
-"pinch": SubResource("Animation_s05a0"),
 "slap_down": SubResource("Animation_hm5cj"),
 "slap_left": SubResource("Animation_blg55"),
 "slap_right": SubResource("Animation_vtlne"),
-"slap_up": SubResource("Animation_wrguj"),
-"unpinch": SubResource("Animation_g2i4m")
+"slap_up": SubResource("Animation_wrguj")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5e4wd"]
-radius = 77.3888
-
-[sub_resource type="Animation" id="Animation_v43t8"]
-resource_name = "bread_launch"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Vector2i(2, 0), Vector2i(1, 0), Vector2i(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_2mtst"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(2, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_7h3es"]
-resource_name = "bread_consume"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_774qp"]
-_data = {
-"RESET": SubResource("Animation_2mtst"),
-"bread_consume": SubResource("Animation_7h3es"),
-"bread_launch": SubResource("Animation_v43t8")
-}
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_42mhf"]
+radius = 25.0
+height = 89.4268
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45d6x"]
 size = Vector2(92.25, 85.375)
@@ -244,7 +159,6 @@ offset = Vector2(576, 324)
 [node name="ObjectManager" type="Node2D" parent="."]
 
 [node name="Hand" type="Node2D" parent="ObjectManager"]
-z_index = 1
 position = Vector2(744, 370)
 script = ExtResource("4_jksnh")
 
@@ -254,7 +168,7 @@ current_state = NodePath("Active")
 root = NodePath("..")
 
 [node name="Active" type="Node" parent="ObjectManager/Hand/FiniteStateMachine"]
-script = ExtResource("6_8erbr")
+script = ExtResource("2_8cem0")
 
 [node name="Grabbed" type="Node" parent="ObjectManager/Hand/FiniteStateMachine"]
 script = ExtResource("2_8cem0")
@@ -270,33 +184,20 @@ script = ExtResource("6_jxjrx")
 
 [node name="HandSprite" type="Sprite2D" parent="ObjectManager/Hand"]
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("7_oqvgj")
+texture = ExtResource("7_18hej")
 hframes = 6
-vframes = 6
+vframes = 4
 
-[node name="Area2D" type="Area2D" parent="ObjectManager/Hand"]
+[node name="RigidBody2D" type="RigidBody2D" parent="ObjectManager/Hand"]
 position = Vector2(-580, -350)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/Hand/Area2D"]
-position = Vector2(580, 349)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/Hand/RigidBody2D"]
+position = Vector2(575, 347)
 rotation = -1.04022
-scale = Vector2(1, 1)
-shape = SubResource("CircleShape2D_5e4wd")
+shape = SubResource("CapsuleShape2D_42mhf")
 
 [node name="Toaster" type="Node2D" parent="ObjectManager"]
 position = Vector2(-125, 193)
-
-[node name="Sprite2D" type="Sprite2D" parent="ObjectManager/Toaster"]
-position = Vector2(694, 369)
-scale = Vector2(0.147481, 0.147481)
-texture = ExtResource("8_dxmu3")
-hframes = 4
-frame = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ObjectManager/Toaster"]
-libraries = {
-"": SubResource("AnimationLibrary_774qp")
-}
 
 [node name="Bread" type="RigidBody2D" parent="ObjectManager"]
 position = Vector2(434, 366)
@@ -317,6 +218,3 @@ position = Vector2(593, 629)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/TempFloor/StaticBody2D"]
 shape = SubResource("RectangleShape2D_eurva")
-
-[connection signal="body_entered" from="ObjectManager/Hand/Area2D" to="ObjectManager/Hand/FiniteStateMachine/Active" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="ObjectManager/Hand/Area2D" to="ObjectManager/Hand/FiniteStateMachine/Active" method="_on_area_2d_body_exited"]

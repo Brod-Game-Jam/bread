@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gcvsej6uhdvf"
-path="res://.godot/imported/hand_sheet.png-d4351f2b36017a3d05a8cb5c567e183f.ctex"
+uid="uid://dlx8sgmg570su"
+path="res://.godot/imported/bread_32.png-485f278dd1d84bdadd94aad469e00ec6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://visual/hand_sheet.png"
-dest_files=["res://.godot/imported/hand_sheet.png-d4351f2b36017a3d05a8cb5c567e183f.ctex"]
+source_file="res://visual/legacy/bread_32.png"
+dest_files=["res://.godot/imported/bread_32.png-485f278dd1d84bdadd94aad469e00ec6.ctex"]
 
 [params]
 

@@ -15,6 +15,10 @@ run/main_scene="res://scenes/game_manager.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+mouse_cursor/custom_image="res://visual/legacy/bread_32.png"
+
 [input]
 
 Strike={
