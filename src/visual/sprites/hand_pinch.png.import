@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d35rgdskr7i23"
-path="res://.godot/imported/toast.png-aa01b7c7bfe61a74b6b04c98fc2e4ec4.ctex"
+uid="uid://dsl6dcq41v52c"
+path="res://.godot/imported/hand_pinch.png-869503058e53bc49f2f331f795e1795c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://visual/sprites/toast.png"
-dest_files=["res://.godot/imported/toast.png-aa01b7c7bfe61a74b6b04c98fc2e4ec4.ctex"]
+source_file="res://visual/sprites/hand_pinch.png"
+dest_files=["res://.godot/imported/hand_pinch.png-869503058e53bc49f2f331f795e1795c.ctex"]
 
 [params]
 

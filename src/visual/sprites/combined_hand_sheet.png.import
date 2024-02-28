@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d35rgdskr7i23"
-path="res://.godot/imported/toast.png-aa01b7c7bfe61a74b6b04c98fc2e4ec4.ctex"
+uid="uid://cuig638wnq0li"
+path="res://.godot/imported/combined_hand_sheet.png-13afc23b425aab1387ed1ac8f88e4733.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://visual/sprites/toast.png"
-dest_files=["res://.godot/imported/toast.png-aa01b7c7bfe61a74b6b04c98fc2e4ec4.ctex"]
+source_file="res://visual/sprites/combined_hand_sheet.png"
+dest_files=["res://.godot/imported/combined_hand_sheet.png-13afc23b425aab1387ed1ac8f88e4733.ctex"]
 
 [params]
 

@@ -216,42 +216,32 @@ script = ExtResource("5_6kj84")
 [node name="Win" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("6_n1l45")
 
-[node name="Visual" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Background" type="Control" parent="Visual"]
+[node name="HeatMeter" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Lives" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="Control" parent="UI"]
 custom_minimum_size = Vector2(0.955, 1.22)
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="Background" type="Sprite2D" parent="Visual/Background"]
+[node name="Background" type="Sprite2D" parent="UI/Background"]
 position = Vector2(576.444, 325.5)
 scale = Vector2(0.249614, 0.249614)
 texture = ExtResource("3_faw3r")
-
-[node name="GUI" type="MarginContainer" parent="Visual"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
-
-[node name="HeatMeter" type="Control" parent="Visual/GUI"]
-layout_mode = 2
-
-[node name="Lives" type="Control" parent="Visual/GUI"]
-layout_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(576, 324)
@@ -259,7 +249,7 @@ offset = Vector2(576, 324)
 [node name="ObjectManager" type="Node2D" parent="."]
 
 [node name="Hand" type="Node2D" parent="ObjectManager"]
-z_index = 2
+z_index = 1
 position = Vector2(744, 370)
 script = ExtResource("4_jksnh")
 
@@ -298,7 +288,6 @@ rotation = -1.04022
 shape = SubResource("CircleShape2D_5e4wd")
 
 [node name="Toaster" type="Node2D" parent="ObjectManager"]
-z_index = 1
 position = Vector2(580, 560)
 script = ExtResource("14_7eykj")
 
