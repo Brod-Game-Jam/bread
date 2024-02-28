@@ -1,16 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://dadwi0qkoagy"]
+[gd_scene load_steps=14 format=3 uid="uid://dadwi0qkoagy"]
 
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_kbsxm"]
 [ext_resource type="Texture2D" uid="uid://6u8lgnallxi7" path="res://visual/main_menu/new_game.png" id="2_j11kh"]
+[ext_resource type="Texture2D" uid="uid://vreytse75mbn" path="res://visual/legacy/bread_128.png" id="3_6o37r"]
 [ext_resource type="Texture2D" uid="uid://bsy8f2xs8vstv" path="res://visual/main_menu/new_game_pressed.png" id="3_r36nt"]
 [ext_resource type="Texture2D" uid="uid://7q4ojm32uju5" path="res://visual/main_menu/new_game_hovered.png" id="4_xv5my"]
 [ext_resource type="Texture2D" uid="uid://dyhlbcnmmb3qa" path="res://visual/main_menu/settings.png" id="5_e08pw"]
 [ext_resource type="Texture2D" uid="uid://cgfw8p4et6rkk" path="res://visual/main_menu/settings_pressed.png" id="6_u6eca"]
 [ext_resource type="Texture2D" uid="uid://djy2ni7q673fg" path="res://visual/main_menu/settings_hovered.png" id="7_gyyhh"]
-[ext_resource type="Script" path="res://scripts/UI/volume_slider.gd" id="8_0yuun"]
 [ext_resource type="AudioStream" uid="uid://sch86vr0caow" path="res://audio/legacy/Froggerton.mp3" id="9_assog"]
-[ext_resource type="Script" path="res://scripts/UI/sub_slider.gd" id="10_ycdts"]
-[ext_resource type="AudioStream" uid="uid://7vltso677x7a" path="res://audio/legacy/Recording.mp3" id="11_f6ymc"]
+[ext_resource type="PackedScene" uid="uid://uy2vcwempyaw" path="res://scenes/options.tscn" id="9_ccilo"]
 [ext_resource type="Texture2D" uid="uid://dut48hpixhgkw" path="res://visual/main_menu/return.png" id="12_j5go0"]
 [ext_resource type="Texture2D" uid="uid://laj86n2k1fx8" path="res://visual/main_menu/return_pressed.png" id="13_bboof"]
 [ext_resource type="Texture2D" uid="uid://t1p8yakgl43q" path="res://visual/main_menu/return_hovered.png" id="14_au8sc"]
@@ -36,7 +35,6 @@ autoplay = true
 bus = &"Music"
 
 [node name="Main" type="CenterContainer" parent="."]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -46,7 +44,7 @@ layout_mode = 2
 
 [node name="Title" type="TextureRect" parent="Main/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_j11kh")
+texture = ExtResource("3_6o37r")
 stretch_mode = 2
 
 [node name="New Game" type="TextureButton" parent="Main/VBoxContainer"]
@@ -67,59 +65,11 @@ text = "ver 0.1
 bred team"
 
 [node name="Settings" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 2
 
-[node name="Options" type="VBoxContainer" parent="Settings"]
+[node name="Options" parent="Settings" instance=ExtResource("9_ccilo")]
 layout_mode = 2
-
-[node name="Master" type="PanelContainer" parent="Settings/Options"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Settings/Options/Master"]
-layout_mode = 2
-text = "Master Volume"
-
-[node name="Master Volume" type="HSlider" parent="Settings/Options/Master"]
-layout_mode = 2
-max_value = 1.0
-step = 0.05
-script = ExtResource("8_0yuun")
-bus_name = "Master"
-
-[node name="Music" type="PanelContainer" parent="Settings/Options"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Settings/Options/Music"]
-layout_mode = 2
-text = "Music"
-
-[node name="Music" type="HSlider" parent="Settings/Options/Music"]
-layout_mode = 2
-max_value = 1.0
-step = 0.05
-script = ExtResource("8_0yuun")
-bus_name = "Music"
-
-[node name="Effects" type="PanelContainer" parent="Settings/Options"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Settings/Options/Effects"]
-layout_mode = 2
-text = "Sound effects"
-
-[node name="Effects" type="HSlider" parent="Settings/Options/Effects"]
-layout_mode = 2
-max_value = 1.0
-step = 0.05
-script = ExtResource("10_ycdts")
-sound_file = ExtResource("11_f6ymc")
-bus_name = "Effects"
 
 [node name="Return" type="TextureButton" parent="Settings/Options"]
 layout_mode = 2
@@ -129,6 +79,4 @@ texture_hover = ExtResource("14_au8sc")
 
 [connection signal="pressed" from="Main/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="drag_ended" from="Settings/Options/Music/Music" to="Settings/Options/Music/Music" method="_on_drag_ended"]
-[connection signal="drag_ended" from="Settings/Options/Effects/Effects" to="Settings/Options/Effects/Effects" method="_on_drag_ended"]
 [connection signal="pressed" from="Settings/Options/Return" to="." method="_on_return_pressed"]
