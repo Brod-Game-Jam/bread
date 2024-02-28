@@ -1,5 +1,4 @@
 extends State
-class_name GameStartState
 
 func _enter_state():
 	pass

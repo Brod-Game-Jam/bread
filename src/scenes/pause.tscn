@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bucmw24x85tw2"]
+
+[ext_resource type="Script" path="res://scripts/UI/Pause.gd" id="1_qg7b3"]
+[ext_resource type="PackedScene" uid="uid://uy2vcwempyaw" path="res://scenes/options.tscn" id="2_2uumb"]
+
+[node name="Menu" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qg7b3")
+
+[node name="Option" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Return" type="Button" parent="Option"]
+layout_mode = 2
+text = "Return"
+
+[node name="Options" parent="Option" instance=ExtResource("2_2uumb")]
+layout_mode = 2
+
+[node name="PauseMenu" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Pause" type="Label" parent="PauseMenu"]
+layout_mode = 2
+text = "~Pause~"
+
+[node name="Resume" type="Button" parent="PauseMenu"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Options" type="Button" parent="PauseMenu"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="PauseMenu"]
+layout_mode = 2
+text = "Exit Game"
+
+[connection signal="pressed" from="Option/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="PauseMenu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PauseMenu/Quit" to="." method="_on_quit_pressed"]

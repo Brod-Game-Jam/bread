@@ -14,9 +14,9 @@ func _change_state(new_state: State):
 	super(new_state)
 	
 	# TODO: Set cursor to visible when biting and visible when active
-	if current_state.get_name() == "Grabbed":
-		Input.set_custom_mouse_cursor(bite)
+	if new_state.get_name() == "Grabbed":
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		Input.set_custom_mouse_cursor(bite)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		Input.set_custom_mouse_cursor(bread)

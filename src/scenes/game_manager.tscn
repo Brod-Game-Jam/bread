@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=34 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -10,13 +10,14 @@
 [ext_resource type="Script" path="res://scripts/player/Hand.gd" id="4_jksnh"]
 [ext_resource type="Script" path="res://scripts/game/GameLoseState.gd" id="5_6kj84"]
 [ext_resource type="Script" path="res://scripts/player/Active.gd" id="6_8erbr"]
-[ext_resource type="Script" path="res://scenes/HandAnimation.gd" id="6_jxjrx"]
 [ext_resource type="Script" path="res://scripts/game/GameWinState.gd" id="6_n1l45"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
 [ext_resource type="Texture2D" uid="uid://cuig638wnq0li" path="res://visual/sprites/combined_hand_sheet.png" id="7_oqvgj"]
-[ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
-[ext_resource type="Script" path="res://scenes/Toaster.gd" id="14_7eykj"]
+[ext_resource type="PackedScene" uid="uid://4hxvneoe1jtw" path="res://scenes/gui.tscn" id="8_dk45a"]
+[ext_resource type="Texture2D" uid="uid://dhfsvyslbd3hb" path="res://visual/sprites/toast.png" id="8_dxmu3"]
+[ext_resource type="PackedScene" uid="uid://bucmw24x85tw2" path="res://scenes/pause.tscn" id="10_q2nwk"]
+[ext_resource type="Script" path="res://scenes/HandAnimation.gd" id="14_7eykj"]
 
 [sub_resource type="Animation" id="Animation_b0ikg"]
 length = 0.001
@@ -216,7 +217,7 @@ script = ExtResource("5_6kj84")
 [node name="Win" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("6_n1l45")
 
-[node name="Visual" type="Control" parent="."]
+[node name="VisualManager" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -225,33 +226,28 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 
-[node name="Background" type="Control" parent="Visual"]
-custom_minimum_size = Vector2(0.955, 1.22)
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+[node name="Background" type="CanvasLayer" parent="VisualManager"]
+layer = -1
+follow_viewport_enabled = true
 
-[node name="Background" type="Sprite2D" parent="Visual/Background"]
+[node name="Background" type="Sprite2D" parent="VisualManager/Background"]
 position = Vector2(576.444, 325.5)
 scale = Vector2(0.249614, 0.249614)
 texture = ExtResource("3_faw3r")
 
-[node name="GUI" type="MarginContainer" parent="Visual"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
+[node name="GUI2" type="CanvasLayer" parent="VisualManager"]
+follow_viewport_enabled = true
 
-[node name="HeatMeter" type="Control" parent="Visual/GUI"]
-layout_mode = 2
+[node name="GUI" parent="VisualManager/GUI2" instance=ExtResource("8_dk45a")]
+offset_bottom = 200.0
 
-[node name="Lives" type="Control" parent="Visual/GUI"]
-layout_mode = 2
+[node name="Pause" type="CanvasLayer" parent="VisualManager"]
+process_mode = 3
+follow_viewport_enabled = true
+
+[node name="Menu" parent="VisualManager/Pause" instance=ExtResource("10_q2nwk")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(576, 324)
@@ -281,7 +277,7 @@ script = ExtResource("2_8cem0")
 libraries = {
 "": SubResource("AnimationLibrary_l011y")
 }
-script = ExtResource("6_jxjrx")
+script = ExtResource("14_7eykj")
 
 [node name="HandSprite" type="Sprite2D" parent="ObjectManager/Hand"]
 scale = Vector2(0.15, 0.15)
@@ -300,7 +296,6 @@ shape = SubResource("CircleShape2D_5e4wd")
 [node name="Toaster" type="Node2D" parent="ObjectManager"]
 z_index = 1
 position = Vector2(580, 560)
-script = ExtResource("14_7eykj")
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjectManager/Toaster"]
 scale = Vector2(0.147481, 0.147481)

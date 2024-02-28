@@ -8,7 +8,6 @@ func _on_return_pressed():
 	settings.visible = false
 
 func _on_new_game_pressed():
-	print("New Game")
 	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://scenes/game_manager.tscn")
 
@@ -20,7 +19,3 @@ func _on_settings_pressed():
 func _ready():
 	labels.visible = true
 	settings.visible = false
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

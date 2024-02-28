@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dadwi0qkoagy"]
+[gd_scene load_steps=11 format=3 uid="uid://dadwi0qkoagy"]
 
-[ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_kbsxm"]
+[ext_resource type="Script" path="res://scripts/UI/MainMenu.gd" id="1_kbsxm"]
 [ext_resource type="Texture2D" uid="uid://6u8lgnallxi7" path="res://visual/main_menu/new_game.png" id="2_j11kh"]
 [ext_resource type="Texture2D" uid="uid://vreytse75mbn" path="res://visual/legacy/bread_128.png" id="3_6o37r"]
 [ext_resource type="Texture2D" uid="uid://bsy8f2xs8vstv" path="res://visual/main_menu/new_game_pressed.png" id="3_r36nt"]
@@ -10,9 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://djy2ni7q673fg" path="res://visual/main_menu/settings_hovered.png" id="7_gyyhh"]
 [ext_resource type="AudioStream" uid="uid://sch86vr0caow" path="res://audio/legacy/Froggerton.mp3" id="9_assog"]
 [ext_resource type="PackedScene" uid="uid://uy2vcwempyaw" path="res://scenes/options.tscn" id="9_ccilo"]
-[ext_resource type="Texture2D" uid="uid://dut48hpixhgkw" path="res://visual/main_menu/return.png" id="12_j5go0"]
-[ext_resource type="Texture2D" uid="uid://laj86n2k1fx8" path="res://visual/main_menu/return_pressed.png" id="13_bboof"]
-[ext_resource type="Texture2D" uid="uid://t1p8yakgl43q" path="res://visual/main_menu/return_hovered.png" id="14_au8sc"]
 
 [node name="MainMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -64,19 +61,23 @@ layout_mode = 2
 text = "ver 0.1
 bred team"
 
-[node name="Settings" type="CenterContainer" parent="."]
-visible = false
-layout_mode = 2
+[node name="Settings" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
-[node name="Options" parent="Settings" instance=ExtResource("9_ccilo")]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
+offset_left = 425.0
+offset_top = 226.0
+offset_right = 486.0
+offset_bottom = 261.0
+alignment = 1
 
-[node name="Return" type="TextureButton" parent="Settings/Options"]
+[node name="Return" type="Button" parent="Settings/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("12_j5go0")
-texture_pressed = ExtResource("13_bboof")
-texture_hover = ExtResource("14_au8sc")
+text = "Return"
+
+[node name="Options" parent="Settings/VBoxContainer" instance=ExtResource("9_ccilo")]
+layout_mode = 2
 
 [connection signal="pressed" from="Main/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Settings/Options/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Settings/VBoxContainer/Return" to="." method="_on_return_pressed"]
