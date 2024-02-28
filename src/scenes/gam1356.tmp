@@ -249,7 +249,7 @@ offset = Vector2(576, 324)
 [node name="ObjectManager" type="Node2D" parent="."]
 
 [node name="Hand" type="Node2D" parent="ObjectManager"]
-z_index = 2
+z_index = 1
 position = Vector2(744, 370)
 script = ExtResource("4_jksnh")
 
@@ -288,7 +288,6 @@ rotation = -1.04022
 shape = SubResource("CircleShape2D_5e4wd")
 
 [node name="Toaster" type="Node2D" parent="ObjectManager"]
-z_index = 1
 position = Vector2(580, 560)
 script = ExtResource("14_7eykj")
 

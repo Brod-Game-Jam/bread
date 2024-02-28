@@ -249,7 +249,7 @@ offset = Vector2(576, 324)
 [node name="ObjectManager" type="Node2D" parent="."]
 
 [node name="Hand" type="Node2D" parent="ObjectManager"]
-z_index = 2
+z_index = 1
 position = Vector2(744, 370)
 script = ExtResource("4_jksnh")
 
@@ -288,11 +288,11 @@ rotation = -1.04022
 shape = SubResource("CircleShape2D_5e4wd")
 
 [node name="Toaster" type="Node2D" parent="ObjectManager"]
-z_index = 1
-position = Vector2(580, 560)
+position = Vector2(-125, 193)
 script = ExtResource("14_7eykj")
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjectManager/Toaster"]
+position = Vector2(694, 369)
 scale = Vector2(0.147481, 0.147481)
 texture = ExtResource("8_dxmu3")
 hframes = 4
@@ -304,7 +304,7 @@ libraries = {
 }
 
 [node name="Bread" type="RigidBody2D" parent="ObjectManager"]
-position = Vector2(900, 366)
+position = Vector2(434, 366)
 script = ExtResource("7_hdxja")
 
 [node name="BreadSprite" type="Sprite2D" parent="ObjectManager/Bread"]
