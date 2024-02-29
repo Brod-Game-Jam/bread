@@ -1,6 +1,5 @@
 [gd_scene load_steps=33 format=3 uid="uid://dtthp3571n54c"]
 
-
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
 [ext_resource type="Script" path="res://scripts/game/GameStartState.gd" id="2_488ae"]
