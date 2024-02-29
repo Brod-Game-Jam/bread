@@ -13,10 +13,10 @@ func _exit_state():
 	pass
 
 func _state_update(_delta: float):
-	if state_machine.current_heat <= state_machine.max_heat:
-		state_machine.current_heat += _delta
-		if state_machine.current_heat >= state_machine.max_heat:
-			state_machine.current_heat = state_machine.max_heat
+	if state_machine.temperature <= state_machine.max_temperature:
+		state_machine.temperature += _delta
+		if state_machine.temperature >= state_machine.max_temperature:
+			state_machine.temperature = state_machine.max_temperature
 			bread_heated.emit()
 			state_machine._change_state(airborne_state)
 
