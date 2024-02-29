@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
 [ext_resource type="Texture2D" uid="uid://cuig638wnq0li" path="res://visual/sprites/combined_hand_sheet.png" id="7_oqvgj"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
-
+[ext_resource type="Script" path="res://scenes/Toaster.gd" id="14_7eykj"]
 
 [sub_resource type="Animation" id="Animation_b0ikg"]
 length = 0.001
