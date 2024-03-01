@@ -10,14 +10,14 @@ func _ready():
 	toaster = get_node("../Toaster")
 	
 	# Connect signals
-	state_toasting.connect("state_entered",reset_bread)
-	state_airborne.connect("state_entered",toaster_expulsion)
+	state_toasting.connect("state_entered",_reset_bread)
+	state_airborne.connect("state_entered",_toaster_expulsion)
 	
-func reset_bread():
+func _reset_bread():
 	var reset_state = true
 	
 # Launch bread out of toaster
-func toaster_expulsion():
+func _toaster_expulsion():
 	apply_impulse(Vector2(0,-1000))
 	pass
 	
@@ -34,7 +34,7 @@ func _integrate_forces(state):
 func _physics_process(delta):
 	# Temporary features for debugging
 	if Input.is_action_just_pressed("Temp_expulse"):
-		toaster_expulsion()
+		_toaster_expulsion()
 	if Input.is_action_just_pressed("Temp_reset"):
 		reset_state = true
 
