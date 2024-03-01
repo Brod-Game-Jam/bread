@@ -28,16 +28,17 @@ func _state_physics_update(_delta: float):
 		emit_signal("strike", dir)
 		
 	elif (Input.is_action_just_pressed("Strike")):
-		print("Not in bread area :(")
+		pass
+		#print("Not in bread area :(")
 
 
 func _on_area_2d_body_entered(body):
-	print("Bread area entered")
 	bread_near = true;
+	#print("Bread area entered")
 	pass # Replace with function body.
 
 
 func _on_area_2d_body_exited(body):
-	print("Bread area exited")
+	#print("Bread area exited")
 	bread_near = false;
 	pass # Replace with function body.
