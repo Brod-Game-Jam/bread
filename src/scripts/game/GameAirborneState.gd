@@ -8,9 +8,11 @@ class_name GameAirborneState
 var color_offset = 0
 var current_color = Color.WHITE
 var flashSpeed:float = 0.01
+var bread_too_hot = false
 
 func _enter_state():
 	state_machine.temperature = state_machine.max_temperature
+	bread_too_hot = true
 	pass
 
 func _exit_state():
@@ -22,6 +24,8 @@ func _state_update(_delta: float):
 		state_machine.temperature -= _delta*state_machine.temperature_decrease_per_second
 		if state_machine.temperature <= 0:
 			state_machine.temperature = 0
+		if state_machine.temperature < state_machine.bread_temperature_edible_spectrum.y:
+			bread_too_hot = false
 
 func _do_color_check(_delta: float):
 	var temp = state_machine.temperature
