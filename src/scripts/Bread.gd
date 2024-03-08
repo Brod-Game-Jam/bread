@@ -14,7 +14,7 @@ func _ready():
 	state_airborne.connect("state_entered",_toaster_expulsion)
 	
 func _reset_bread():
-	var reset_state = true
+	reset_state = true
 	
 # Launch bread out of toaster
 func _toaster_expulsion():
