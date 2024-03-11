@@ -2,6 +2,8 @@ extends RigidBody2D
 var toaster
 var reset_state = false
 
+signal bread_dropped
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Retrieve nodes
@@ -29,6 +31,11 @@ func _integrate_forces(state):
 		state.angular_velocity = 0
 		state.transform = Transform2D(0.0,toaster.position)
 		reset_state = false
+		# TODO enable bread prison
+		
+	# Checks for dropped bread
+	if position.y > get_viewport_rect().size.y:
+		bread_dropped.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

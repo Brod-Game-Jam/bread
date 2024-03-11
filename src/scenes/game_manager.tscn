@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=35 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -192,9 +192,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45d6x"]
 size = Vector2(92.25, 85.375)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eurva"]
-size = Vector2(1380, 40)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpmo6"]
 size = Vector2(1261, 42)
 
@@ -332,15 +329,6 @@ texture = ExtResource("7_05pa5")
 shape = SubResource("RectangleShape2D_45d6x")
 
 [node name="Walls" type="Node2D" parent="ObjectManager"]
-
-[node name="TempFloor" type="Node2D" parent="ObjectManager/Walls"]
-position = Vector2(593, 629)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="ObjectManager/Walls/TempFloor"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/Walls/TempFloor/StaticBody2D"]
-position = Vector2(0, 78)
-shape = SubResource("RectangleShape2D_eurva")
 
 [node name="Ceiling" type="Node2D" parent="ObjectManager/Walls"]
 position = Vector2(593, 629)
