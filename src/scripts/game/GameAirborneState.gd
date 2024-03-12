@@ -14,12 +14,9 @@ var bread_too_hot = false
 func _enter_state():
 	state_machine.temperature = state_machine.max_temperature
 	bread_too_hot = true
-	
-	### exp
+
+	# Connect signals
 	state_machine.bread.bread_dropped.connect(_on_bread_dropped)
-	###
-	
-	pass
 
 func _exit_state():
 	pass

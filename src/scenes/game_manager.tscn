@@ -192,7 +192,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45d6x"]
 size = Vector2(92.25, 85.375)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpmo6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8256o"]
 size = Vector2(1261, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6mbp"]
@@ -251,7 +251,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 
 [node name="Background" type="Sprite2D" parent="UI/Background"]
-position = Vector2(576.444, 325.5)
+position = Vector2(576, 324)
 scale = Vector2(0.249614, 0.249614)
 texture = ExtResource("3_faw3r")
 
@@ -335,9 +335,9 @@ position = Vector2(593, 629)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ObjectManager/Walls/Ceiling"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/Walls/Ceiling/StaticBody2D"]
-position = Vector2(-15, -652)
-shape = SubResource("RectangleShape2D_qpmo6")
+[node name="CollisionShape2" type="CollisionShape2D" parent="ObjectManager/Walls/Ceiling/StaticBody2D"]
+position = Vector2(-17, -651)
+shape = SubResource("RectangleShape2D_8256o")
 
 [node name="Left wall" type="Node2D" parent="ObjectManager/Walls"]
 position = Vector2(593, 629)
@@ -345,7 +345,7 @@ position = Vector2(593, 629)
 [node name="StaticBody2D" type="StaticBody2D" parent="ObjectManager/Walls/Left wall"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/Walls/Left wall/StaticBody2D"]
-position = Vector2(-620, -280.75)
+position = Vector2(-622, -281)
 shape = SubResource("RectangleShape2D_d6mbp")
 
 [node name="Right wall" type="Node2D" parent="ObjectManager/Walls"]
