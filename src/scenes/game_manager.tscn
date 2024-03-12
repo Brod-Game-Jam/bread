@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=35 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
-[ext_resource type="Texture2D" uid="uid://cwmgbwpenoiow" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
+[ext_resource type="Texture2D" uid="uid://d0wfqaxyfa87g" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
 [ext_resource type="Script" path="res://scenes/Toaster.gd" id="14_7eykj"]
 
 [sub_resource type="Animation" id="Animation_b0ikg"]
@@ -192,8 +192,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45d6x"]
 size = Vector2(92.25, 85.375)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eurva"]
-size = Vector2(1380, 40)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8256o"]
+size = Vector2(1261, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6mbp"]
+size = Vector2(56, 783.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdwrr"]
+size = Vector2(56, 787.5)
 
 [node name="GameManager" type="Node2D"]
 
@@ -245,7 +251,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 
 [node name="Background" type="Sprite2D" parent="UI/Background"]
-position = Vector2(576.444, 325.5)
+position = Vector2(576, 324)
 scale = Vector2(0.249614, 0.249614)
 texture = ExtResource("3_faw3r")
 
@@ -322,13 +328,34 @@ texture = ExtResource("7_05pa5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/Bread"]
 shape = SubResource("RectangleShape2D_45d6x")
 
-[node name="TempFloor" type="Node2D" parent="ObjectManager"]
+[node name="Walls" type="Node2D" parent="ObjectManager"]
+
+[node name="Ceiling" type="Node2D" parent="ObjectManager/Walls"]
 position = Vector2(593, 629)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ObjectManager/TempFloor"]
+[node name="StaticBody2D" type="StaticBody2D" parent="ObjectManager/Walls/Ceiling"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/TempFloor/StaticBody2D"]
-shape = SubResource("RectangleShape2D_eurva")
+[node name="CollisionShape2" type="CollisionShape2D" parent="ObjectManager/Walls/Ceiling/StaticBody2D"]
+position = Vector2(-17, -651)
+shape = SubResource("RectangleShape2D_8256o")
+
+[node name="Left wall" type="Node2D" parent="ObjectManager/Walls"]
+position = Vector2(593, 629)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ObjectManager/Walls/Left wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/Walls/Left wall/StaticBody2D"]
+position = Vector2(-622, -281)
+shape = SubResource("RectangleShape2D_d6mbp")
+
+[node name="Right wall" type="Node2D" parent="ObjectManager/Walls"]
+position = Vector2(593, 629)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ObjectManager/Walls/Right wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/Walls/Right wall/StaticBody2D"]
+position = Vector2(588, -278.75)
+shape = SubResource("RectangleShape2D_sdwrr")
 
 [connection signal="body_entered" from="ObjectManager/Hand/Area2D" to="ObjectManager/Hand/FiniteStateMachine/Active" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="ObjectManager/Hand/Area2D" to="ObjectManager/Hand/FiniteStateMachine/Active" method="_on_area_2d_body_exited"]

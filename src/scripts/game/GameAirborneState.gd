@@ -2,6 +2,7 @@ extends State
 class_name GameAirborneState
 
 @onready var insert 
+@onready var toaster_state:State = $"../Toasting"
 @export var hot_bread_color:Color
 @export var cool_bread_color:Color
 @export var color_change_window:float = 5
@@ -13,7 +14,9 @@ var bread_too_hot = false
 func _enter_state():
 	state_machine.temperature = state_machine.max_temperature
 	bread_too_hot = true
-	pass
+
+	# Connect signals
+	state_machine.bread.bread_dropped.connect(_on_bread_dropped)
 
 func _exit_state():
 	pass
@@ -50,3 +53,7 @@ func _do_color_check(_delta: float):
 		
 func _state_physics_update(_delta: float):
 	pass
+	
+func _on_bread_dropped():
+	# TODO check if game over
+	state_machine._change_state(toaster_state)

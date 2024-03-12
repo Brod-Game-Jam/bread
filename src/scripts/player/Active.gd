@@ -31,14 +31,8 @@ func _state_physics_update(_delta: float):
 		pass
 		#print("Not in bread area :(")
 
-
 func _on_area_2d_body_entered(body):
 	bread_near = true;
-	#print("Bread area entered")
-	pass # Replace with function body.
-
 
 func _on_area_2d_body_exited(body):
-	#print("Bread area exited")
 	bread_near = false;
-	pass # Replace with function body.
