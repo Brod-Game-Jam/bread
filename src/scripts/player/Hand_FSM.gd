@@ -1,5 +1,4 @@
 extends FiniteStateMachine
-class_name Hand_FSM
 
 # Load the custom images for the mouse cursor.
 var bread = load("res://visual/legacy/bread_32.png")

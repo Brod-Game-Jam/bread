@@ -1,9 +1,11 @@
 extends RigidBody2D
+var hand
 var toaster
 var toaster_constraints
 var bread_body
 
 var reset_state = false
+var grabbed_state = false
 
 var toaster_constraints_instance
 
@@ -12,6 +14,7 @@ signal bread_dropped
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Retrieve nodes
+	hand = get_node("../Hand")
 	toaster = get_node("../Toaster")
 	
 func _reset_bread():
@@ -29,11 +32,17 @@ func _integrate_forces(state):
 		state.linear_velocity = Vector2.ZERO
 		state.angular_velocity = 0
 		state.transform = Transform2D(0.0,toaster.position)
+	
+	# Move bread together with hand if grabbed
+	if grabbed_state:
+		state.linear_velocity = Vector2.ZERO
+		state.angular_velocity = 0
+		state.transform = Transform2D(0.0, Vector2(hand.position.x-20, hand.position.y-20))
 		
 	# Checks for dropped bread
 	if position.y > get_viewport_rect().size.y:
 		bread_dropped.emit()
-
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	# Temporary features for debugging
