@@ -24,8 +24,13 @@ func bread_is_edible () -> bool:
 
 func _ready():
 	super._ready()
+	bread.bread_dropped.connect(on_bread_dropped)
 	
 func _process(delta):
 	super._process(delta)
-	
+
+func on_bread_dropped():
+	temperature = 0
+	if current_state == states[2]:
+		current_state._on_bread_dropped()
 	

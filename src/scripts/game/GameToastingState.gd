@@ -15,7 +15,6 @@ func _exit_state():
 
 func _state_update(_delta: float):
 	state_machine.bread.freeze = true
-	#print(state_machine.temperature)
 	if state_machine.temperature <= state_machine.max_temperature:
 		state_machine.temperature += _delta*temperature_rise_per_second
 		if state_machine.temperature >= state_machine.max_temperature:
