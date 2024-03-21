@@ -33,15 +33,16 @@ func _integrate_forces(state):
 		state.angular_velocity = 0
 		state.transform = Transform2D(0.0,toaster.position)
 	
-	# Move bread together with hand if grabbed
+	# Checks for dropped bread
+	if position.y > get_viewport_rect().size.y + 500:
+		emit_signal("bread_dropped")
+		
 	if grabbed_state:
+		# Reset velocities
 		state.linear_velocity = Vector2.ZERO
 		state.angular_velocity = 0
-		state.transform = Transform2D(0.0, Vector2(hand.position.x-20, hand.position.y-20))
-		
-	# Checks for dropped bread
-	if position.y > get_viewport_rect().size.y:
-		bread_dropped.emit()
+		# Move bread in relation to pinching hand
+		state.transform = Transform2D(0.0, Vector2(hand.position.x-60, hand.position.y+45))
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
