@@ -2,17 +2,14 @@ extends State
 
 signal strike
 
+@onready var grabbed_state:State = $"../Grabbed"
+
 var bread;
 var bread_near = false;
 var slap_intensity = 1000;
 
-func _initialize_state(state_machine_node:FiniteStateMachine, root_node:Node2D):
-	state_machine = state_machine_node
-	root = root_node
-	bread = get_node("../../../Bread")
-
 func _enter_state():
-	pass
+	bread = get_node("../../../Bread")
 
 func _exit_state():
 	pass
@@ -27,17 +24,11 @@ func _state_physics_update(_delta: float):
 		bread.apply_impulse(dir*slap_intensity)	
 		emit_signal("strike", dir)
 		
-	elif (Input.is_action_just_pressed("Strike")):
-		print("Not in bread area :(")
-
+	if (Input.is_action_just_pressed("Grab") && bread_near):
+		state_machine._change_state(grabbed_state)
 
 func _on_area_2d_body_entered(body):
-	print("Bread area entered")
 	bread_near = true;
-	pass # Replace with function body.
-
 
 func _on_area_2d_body_exited(body):
-	print("Bread area exited")
 	bread_near = false;
-	pass # Replace with function body.

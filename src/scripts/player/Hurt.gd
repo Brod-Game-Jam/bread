@@ -1,14 +1,14 @@
-extends State
-class_name GameStartState
+extends  State
 
 func _enter_state():
+	# TODO start cooldown countdown
 	pass
 
 func _exit_state():
 	pass
 
 func _state_update(_delta: float):
-	state_machine._change_state($"../Airborne")
+	# TODO countdown and state change
 	pass
 
 func _state_physics_update(_delta: float):

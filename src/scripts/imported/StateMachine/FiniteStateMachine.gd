@@ -27,6 +27,7 @@ func _change_state(new_state: State):
 	if current_state is State:
 		current_state._exit_state()
 	new_state._enter_state()
+	print(name + ": " + "Entering new state "+ new_state.name)
 	current_state = new_state
 	
 func _process(delta):
