@@ -1,25 +1,29 @@
 extends RigidBody2D
+var hand
 var toaster
+var toaster_constraints
+var bread_body
+
 var reset_state = false
+var grabbed_state = false
+
+var toaster_constraints_instance
+
+signal bread_dropped
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Retrieve nodes
-	var state_toasting = get_node("../../FiniteStateMachine/Toasting")
-	var state_airborne = get_node("../../FiniteStateMachine/Airborne")
+	hand = get_node("../Hand")
 	toaster = get_node("../Toaster")
 	
-	# Connect signals
-	state_toasting.connect("state_entered",reset_bread)
-	state_airborne.connect("state_entered",toaster_expulsion)
-	
-func reset_bread():
-	var reset_state = true
+func _reset_bread():
+	reset_state = true
 	
 # Launch bread out of toaster
-func toaster_expulsion():
+func _toaster_expulsion():
+	reset_state = false 
 	apply_impulse(Vector2(0,-1000))
-	pass
 	
 # Is run every physics update (?)
 func _integrate_forces(state):
@@ -28,14 +32,22 @@ func _integrate_forces(state):
 		state.linear_velocity = Vector2.ZERO
 		state.angular_velocity = 0
 		state.transform = Transform2D(0.0,toaster.position)
-		reset_state = false
-
+	
+	# Move bread together with hand if grabbed
+	if grabbed_state:
+		state.linear_velocity = Vector2.ZERO
+		state.angular_velocity = 0
+		state.transform = Transform2D(0.0, Vector2(hand.position.x-20, hand.position.y-20))
+		
+	# Checks for dropped bread
+	if position.y > get_viewport_rect().size.y:
+		bread_dropped.emit()
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	# Temporary features for debugging
 	if Input.is_action_just_pressed("Temp_expulse"):
-		toaster_expulsion()
+		_toaster_expulsion()
 	if Input.is_action_just_pressed("Temp_reset"):
 		reset_state = true
-
 
