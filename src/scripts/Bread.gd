@@ -40,7 +40,7 @@ func _integrate_forces(state):
 		state.transform = Transform2D(0.0, Vector2(hand.position.x-20, hand.position.y-20))
 		
 	# Checks for dropped bread
-	if position.y > get_viewport_rect().size.y:
+	if position.y > get_viewport_rect().size.y + 100:
 		bread_dropped.emit()
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
