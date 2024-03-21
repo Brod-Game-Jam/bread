@@ -1,5 +1,7 @@
 extends State
 
+signal unpinch
+
 @onready var active_state:State = $"../Active"
 var bread
 
@@ -13,6 +15,7 @@ func _exit_state():
 func _state_update(_delta: float):
 	if (Input.is_action_just_released("Grab")):
 		bread.grabbed_state = false
+		emit_signal("unpinch")
 		state_machine._change_state(active_state)
 
 func _state_physics_update(_delta: float):

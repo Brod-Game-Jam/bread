@@ -1,6 +1,7 @@
 extends State
 
 signal strike
+signal pinch
 
 @onready var grabbed_state:State = $"../Grabbed"
 
@@ -25,6 +26,7 @@ func _state_physics_update(_delta: float):
 		emit_signal("strike", dir)
 		
 	if (Input.is_action_just_pressed("Grab") && bread_near):
+		emit_signal("pinch")
 		state_machine._change_state(grabbed_state)
 
 func _on_area_2d_body_entered(body):

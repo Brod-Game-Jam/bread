@@ -3,10 +3,21 @@ extends AnimationPlayer
 func _ready():
 	pass
 	## RETRIEVE SIGNAL ORIGIN 
-	var hand = get_node("../FiniteStateMachine/Active")
-	hand.connect("strike",play_anim)
+	var active = get_node("../FiniteStateMachine/Active")
+	var grabbed = get_node("../FiniteStateMachine/Grabbed")
+	active.connect("strike",play_strike)
+	active.connect("pinch", play_pinch)
+	grabbed.connect("unpinch", play_unpinch)
+
+func play_pinch():
+	stop()
+	set_current_animation ("pinch")
+
+func play_unpinch():
+	stop()
+	set_current_animation ("unpinch")
 	
-func play_anim(slap_vector):
+func play_strike(slap_vector):
 	stop()
 	var slap_angle = slap_vector.angle()
 	if slap_angle < 0:
