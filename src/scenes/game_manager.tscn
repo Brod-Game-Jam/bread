@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scripts/player/Hand.gd" id="4_jksnh"]
 [ext_resource type="Script" path="res://scripts/game/GameLoseState.gd" id="5_6kj84"]
 [ext_resource type="Script" path="res://scripts/player/Active.gd" id="6_8erbr"]
-[ext_resource type="Script" path="res://scenes/HandAnimation.gd" id="6_jxjrx"]
+[ext_resource type="Script" path="res://scripts/HandAnimation.gd" id="6_jxjrx"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
 [ext_resource type="PackedScene" uid="uid://4hxvneoe1jtw" path="res://scenes/gui.tscn" id="8_dk45a"]
@@ -265,21 +265,15 @@ follow_viewport_enabled = true
 
 [node name="Menu" parent="VisualManager/Pause" instance=ExtResource("10_q2nwk")]
 
-[node name="UI#Lives" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="UI#Background" type="Control" parent="."]
+[node name="Background2" type="Control" parent="VisualManager"]
 custom_minimum_size = Vector2(0.955, 1.22)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="UI_Background#Background" type="Sprite2D" parent="."]
-position = Vector2(584, 321)
+[node name="Background" type="Sprite2D" parent="VisualManager/Background2"]
+position = Vector2(576, 324)
 scale = Vector2(0.249614, 0.249614)
 texture = ExtResource("3_faw3r")
 

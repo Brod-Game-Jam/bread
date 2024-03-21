@@ -33,3 +33,7 @@ func _on_resume_pressed():
 	get_tree().paused = false
 	set_visible(false)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+func _on_title_screen_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
