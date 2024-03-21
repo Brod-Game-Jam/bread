@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dadwi0qkoagy"]
+[gd_scene load_steps=11 format=3 uid="uid://cjkkj5bidysw0"]
 
 [ext_resource type="Script" path="res://scripts/UI/MainMenu.gd" id="1_kbsxm"]
 [ext_resource type="Texture2D" uid="uid://6u8lgnallxi7" path="res://visual/main_menu/new_game.png" id="2_j11kh"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cgfw8p4et6rkk" path="res://visual/main_menu/settings_pressed.png" id="6_u6eca"]
 [ext_resource type="Texture2D" uid="uid://djy2ni7q673fg" path="res://visual/main_menu/settings_hovered.png" id="7_gyyhh"]
 [ext_resource type="AudioStream" uid="uid://sch86vr0caow" path="res://audio/legacy/Froggerton.mp3" id="9_assog"]
-[ext_resource type="PackedScene" uid="uid://uy2vcwempyaw" path="res://scenes/options.tscn" id="9_ccilo"]
+[ext_resource type="PackedScene" path="res://scenes/options.tscn" id="9_ccilo"]
 
 [node name="MainMenu" type="MarginContainer"]
 anchors_preset = 15

@@ -12,9 +12,9 @@
 [ext_resource type="Script" path="res://scripts/player/Active.gd" id="6_8erbr"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
-[ext_resource type="PackedScene" uid="uid://4hxvneoe1jtw" path="res://scenes/gui.tscn" id="8_dk45a"]
+[ext_resource type="PackedScene" path="res://scenes/gui.tscn" id="8_dk45a"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
-[ext_resource type="PackedScene" uid="uid://bucmw24x85tw2" path="res://scenes/pause.tscn" id="10_q2nwk"]
+[ext_resource type="PackedScene" path="res://scenes/pause.tscn" id="10_q2nwk"]
 [ext_resource type="Script" path="res://scripts/Player/Grabbed.gd" id="11_41njw"]
 [ext_resource type="Texture2D" uid="uid://cw1an3ah2bue1" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
 [ext_resource type="Script" path="res://scenes/Toaster.gd" id="14_7eykj"]
@@ -299,7 +299,6 @@ script = ExtResource("2_8cem0")
 libraries = {
 "": SubResource("AnimationLibrary_l011y")
 }
-script = ExtResource("14_7eykj")
 
 [node name="HandSprite" type="Sprite2D" parent="ObjectManager/Hand"]
 position = Vector2(-34, -1)
@@ -319,6 +318,7 @@ shape = SubResource("CircleShape2D_5e4wd")
 [node name="Toaster" type="Node2D" parent="ObjectManager"]
 z_index = 1
 position = Vector2(580, 560)
+script = ExtResource("14_7eykj")
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjectManager/Toaster"]
 scale = Vector2(0.147481, 0.147481)
