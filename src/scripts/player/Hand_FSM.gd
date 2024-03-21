@@ -6,8 +6,6 @@ var bite = load("res://visual/legacy/bite_bread_32.png")
 
 func _ready():
 	super() # Run function from FiniteStateMachine
-	Input.set_custom_mouse_cursor(bite)
-	# Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _change_state(new_state: State):
 	super(new_state)

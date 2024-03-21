@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjkkj5bidysw0"]
+[gd_scene load_steps=11 format=3 uid="uid://xqyt5cm8sigv"]
 
 [ext_resource type="Script" path="res://scripts/UI/MainMenu.gd" id="1_kbsxm"]
 [ext_resource type="Texture2D" uid="uid://6u8lgnallxi7" path="res://visual/main_menu/new_game.png" id="2_j11kh"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" path="res://scenes/options.tscn" id="9_ccilo"]
 
 [node name="MainMenu" type="MarginContainer"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

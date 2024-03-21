@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bucmw24x85tw2"]
+[gd_scene load_steps=3 format=3 uid="uid://pjc34hycabbm"]
 
 [ext_resource type="Script" path="res://scripts/UI/Pause.gd" id="1_qg7b3"]
-[ext_resource type="PackedScene" uid="uid://uy2vcwempyaw" path="res://scenes/options.tscn" id="2_2uumb"]
+[ext_resource type="PackedScene" path="res://scenes/options.tscn" id="2_2uumb"]
 
 [node name="Menu" type="CenterContainer"]
 anchors_preset = 15
@@ -37,6 +37,10 @@ text = "Resume"
 layout_mode = 2
 text = "Options"
 
+[node name="Title Screen" type="Button" parent="PauseMenu"]
+layout_mode = 2
+text = "Title Screen"
+
 [node name="Quit" type="Button" parent="PauseMenu"]
 layout_mode = 2
 text = "Exit Game"
@@ -44,4 +48,5 @@ text = "Exit Game"
 [connection signal="pressed" from="Option/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="PauseMenu/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PauseMenu/Title Screen" to="." method="_on_title_screen_pressed"]
 [connection signal="pressed" from="PauseMenu/Quit" to="." method="_on_quit_pressed"]
