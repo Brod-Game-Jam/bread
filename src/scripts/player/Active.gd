@@ -1,6 +1,7 @@
 extends State
 
 signal strike
+signal pinch
 
 @onready var grabbed_state:State = $"../Grabbed"
 
@@ -31,7 +32,10 @@ func _state_physics_update(_delta: float):
 	if (Input.is_action_just_pressed("Strike") && bread_near):
 		# invert old velocity if going down
 		if (bread.linear_velocity.y > 0): 
-			bread.linear_velocity = -bread.linear_velocity; 
+			bread.linear_velocity.y = -bread.linear_velocity.y; 
+	
+		# degrade old velocity
+		bread.linear_velocity.x = 0.5*bread.linear_velocity.x;
 	
 		# apply impulse from slap
 		var dir = (bread.position - hand.position).normalized()
@@ -42,6 +46,7 @@ func _state_physics_update(_delta: float):
 		emit_signal("strike", dir)
 		
 	if (Input.is_action_just_pressed("Grab") && bread_near):
+		emit_signal("pinch")
 		state_machine._change_state(grabbed_state)
 
 func _on_area_2d_body_entered(body):

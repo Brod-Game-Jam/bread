@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=41 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -13,11 +13,11 @@
 [ext_resource type="Script" path="res://scenes/HandAnimation.gd" id="6_jxjrx"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
-[ext_resource type="PackedScene" path="res://scenes/gui.tscn" id="8_dk45a"]
+[ext_resource type="PackedScene" uid="uid://4hxvneoe1jtw" path="res://scenes/gui.tscn" id="8_dk45a"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
-[ext_resource type="PackedScene" path="res://scenes/pause.tscn" id="10_q2nwk"]
+[ext_resource type="PackedScene" uid="uid://bucmw24x85tw2" path="res://scenes/pause.tscn" id="10_q2nwk"]
 [ext_resource type="Script" path="res://scripts/Player/Grabbed.gd" id="11_41njw"]
-[ext_resource type="Texture2D" uid="uid://cw1an3ah2bue1" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
+[ext_resource type="Texture2D" uid="uid://d0wfqaxyfa87g" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
 [ext_resource type="Script" path="res://scenes/Toaster.gd" id="14_7eykj"]
 
 [sub_resource type="Animation" id="Animation_b0ikg"]
@@ -137,7 +137,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5e4wd"]
-radius = 70.214
+radius = 62.7694
 
 [sub_resource type="Animation" id="Animation_2mtst"]
 length = 0.001
@@ -191,14 +191,25 @@ _data = {
 "bread_launch": SubResource("Animation_v43t8")
 }
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0slth"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45d6x"]
 size = Vector2(92.25, 85.375)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jm4am"]
+friction = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8256o"]
 size = Vector2(1261, 42)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2c4cq"]
+bounce = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6mbp"]
 size = Vector2(56, 783.5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ylj37"]
+bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdwrr"]
 size = Vector2(56, 787.5)
@@ -268,7 +279,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 
 [node name="UI_Background#Background" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
+position = Vector2(584, 321)
 scale = Vector2(0.249614, 0.249614)
 texture = ExtResource("3_faw3r")
 
@@ -313,7 +324,7 @@ vframes = 6
 position = Vector2(2, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/Hand/Area2D"]
-position = Vector2(-6.10352e-05, -3.05176e-05)
+position = Vector2(-4, -19)
 rotation = -1.04022
 shape = SubResource("CircleShape2D_5e4wd")
 
@@ -335,6 +346,7 @@ libraries = {
 
 [node name="Bread" type="RigidBody2D" parent="ObjectManager"]
 position = Vector2(900, 366)
+physics_material_override = SubResource("PhysicsMaterial_0slth")
 lock_rotation = true
 script = ExtResource("7_hdxja")
 
@@ -352,6 +364,7 @@ shape = SubResource("RectangleShape2D_45d6x")
 position = Vector2(593, 629)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ObjectManager/Walls/Ceiling"]
+physics_material_override = SubResource("PhysicsMaterial_jm4am")
 
 [node name="CollisionShape2" type="CollisionShape2D" parent="ObjectManager/Walls/Ceiling/StaticBody2D"]
 position = Vector2(-17, -651)
@@ -361,6 +374,7 @@ shape = SubResource("RectangleShape2D_8256o")
 position = Vector2(593, 629)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ObjectManager/Walls/Left wall"]
+physics_material_override = SubResource("PhysicsMaterial_2c4cq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/Walls/Left wall/StaticBody2D"]
 position = Vector2(-622, -281)
@@ -370,6 +384,7 @@ shape = SubResource("RectangleShape2D_d6mbp")
 position = Vector2(593, 629)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ObjectManager/Walls/Right wall"]
+physics_material_override = SubResource("PhysicsMaterial_ylj37")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectManager/Walls/Right wall/StaticBody2D"]
 position = Vector2(588, -278.75)
