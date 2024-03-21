@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjkkj5bidysw0"]
+
+[ext_resource type="Script" path="res://scripts/UI/MainMenu.gd" id="1_kbsxm"]
+[ext_resource type="Texture2D" uid="uid://6u8lgnallxi7" path="res://visual/main_menu/new_game.png" id="2_j11kh"]
+[ext_resource type="Texture2D" uid="uid://vreytse75mbn" path="res://visual/legacy/bread_128.png" id="3_6o37r"]
+[ext_resource type="Texture2D" uid="uid://bsy8f2xs8vstv" path="res://visual/main_menu/new_game_pressed.png" id="3_r36nt"]
+[ext_resource type="Texture2D" uid="uid://7q4ojm32uju5" path="res://visual/main_menu/new_game_hovered.png" id="4_xv5my"]
+[ext_resource type="Texture2D" uid="uid://dyhlbcnmmb3qa" path="res://visual/main_menu/settings.png" id="5_e08pw"]
+[ext_resource type="Texture2D" uid="uid://cgfw8p4et6rkk" path="res://visual/main_menu/settings_pressed.png" id="6_u6eca"]
+[ext_resource type="Texture2D" uid="uid://djy2ni7q673fg" path="res://visual/main_menu/settings_hovered.png" id="7_gyyhh"]
+[ext_resource type="AudioStream" uid="uid://sch86vr0caow" path="res://audio/legacy/Froggerton.mp3" id="9_assog"]
+[ext_resource type="PackedScene" path="res://scenes/options.tscn" id="9_ccilo"]
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+script = ExtResource("1_kbsxm")
+
+[node name="Background music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(120, 80)
+stream = ExtResource("9_assog")
+autoplay = true
+bus = &"Music"
+
+[node name="Main" type="CenterContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+
+[node name="Title" type="TextureRect" parent="Main/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_6o37r")
+stretch_mode = 2
+
+[node name="New Game" type="TextureButton" parent="Main/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_j11kh")
+texture_pressed = ExtResource("3_r36nt")
+texture_hover = ExtResource("4_xv5my")
+
+[node name="Settings" type="TextureButton" parent="Main/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_e08pw")
+texture_pressed = ExtResource("6_u6eca")
+texture_hover = ExtResource("7_gyyhh")
+
+[node name="Version" type="Label" parent="Main/VBoxContainer"]
+layout_mode = 2
+text = "ver 0.1
+bred team"
+
+[node name="Settings" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
+offset_left = 425.0
+offset_top = 226.0
+offset_right = 486.0
+offset_bottom = 261.0
+alignment = 1
+
+[node name="Return" type="Button" parent="Settings/VBoxContainer"]
+layout_mode = 2
+text = "Return"
+
+[node name="Options" parent="Settings/VBoxContainer" instance=ExtResource("9_ccilo")]
+layout_mode = 2
+
+[connection signal="pressed" from="Main/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Settings/VBoxContainer/Return" to="." method="_on_return_pressed"]

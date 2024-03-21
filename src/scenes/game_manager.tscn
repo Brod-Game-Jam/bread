@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=37 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -11,12 +11,13 @@
 [ext_resource type="Script" path="res://scripts/game/GameLoseState.gd" id="5_6kj84"]
 [ext_resource type="Script" path="res://scripts/player/Active.gd" id="6_8erbr"]
 [ext_resource type="Script" path="res://scenes/HandAnimation.gd" id="6_jxjrx"]
-[ext_resource type="Script" path="res://scripts/game/GameWinState.gd" id="6_n1l45"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
+[ext_resource type="PackedScene" path="res://scenes/gui.tscn" id="8_dk45a"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
+[ext_resource type="PackedScene" path="res://scenes/pause.tscn" id="10_q2nwk"]
 [ext_resource type="Script" path="res://scripts/Player/Grabbed.gd" id="11_41njw"]
-[ext_resource type="Texture2D" uid="uid://cld150c2rfvso" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
+[ext_resource type="Texture2D" uid="uid://cw1an3ah2bue1" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
 [ext_resource type="Script" path="res://scenes/Toaster.gd" id="14_7eykj"]
 
 [sub_resource type="Animation" id="Animation_b0ikg"]
@@ -226,32 +227,47 @@ cool_bread_color = Color(0.403922, 0.592157, 1, 1)
 [node name="Lose" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("5_6kj84")
 
-[node name="Win" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("6_n1l45")
+[node name="VisualManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
 
-[node name="UI" type="Control" parent="."]
+[node name="Background" type="CanvasLayer" parent="VisualManager"]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="GUI2" type="CanvasLayer" parent="VisualManager"]
+follow_viewport_enabled = true
+
+[node name="GUI" parent="VisualManager/GUI2" instance=ExtResource("8_dk45a")]
+offset_bottom = 200.0
+
+[node name="Pause" type="CanvasLayer" parent="VisualManager"]
+process_mode = 3
+follow_viewport_enabled = true
+
+[node name="Menu" parent="VisualManager/Pause" instance=ExtResource("10_q2nwk")]
+
+[node name="UI#Lives" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HeatMeter" type="Control" parent="UI"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Lives" type="Control" parent="UI"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Background" type="Control" parent="UI"]
+[node name="UI#Background" type="Control" parent="."]
 custom_minimum_size = Vector2(0.955, 1.22)
+layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="Background" type="Sprite2D" parent="UI/Background"]
+[node name="UI_Background#Background" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
 scale = Vector2(0.249614, 0.249614)
 texture = ExtResource("3_faw3r")
