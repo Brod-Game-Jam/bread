@@ -4,13 +4,14 @@ signal strike
 
 @onready var grabbed_state:State = $"../Grabbed"
 
-var bread;
-var bread_near = false;
-
 var hand;
-var slap_intensity = 1000;
 var hand_speed = 5000
 var mouse_pos = Vector2(0,0)
+var horizontal_slap_intensity = 500;
+var vertical_slap_force = -100;
+
+var bread;
+var bread_near = false;
 
 func _enter_state():
 	bread = get_node("../../../Bread")
@@ -28,9 +29,16 @@ func _state_physics_update(_delta: float):
 	hand.position = hand.position.move_toward(mouse_pos, _delta * hand_speed)
 	
 	if (Input.is_action_just_pressed("Strike") && bread_near):
-		var dir = (bread.position - state_machine.root.position).normalized()
-		dir.x = dir.x*0.5
-		bread.apply_impulse(dir*slap_intensity)	
+		# invert old velocity if going down
+		if (bread.linear_velocity.y > 0): 
+			bread.linear_velocity = -bread.linear_velocity; 
+	
+		# apply impulse from slap
+		var dir = (bread.position - hand.position).normalized()
+		dir.x = dir.x * horizontal_slap_intensity;
+		dir.y = vertical_slap_force; # constant vertical contribution
+		bread.apply_impulse(dir)
+		
 		emit_signal("strike", dir)
 		
 	if (Input.is_action_just_pressed("Grab") && bread_near):
