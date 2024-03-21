@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=37 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/player/Hand.gd" id="4_jksnh"]
 [ext_resource type="Script" path="res://scripts/game/GameLoseState.gd" id="5_6kj84"]
 [ext_resource type="Script" path="res://scripts/player/Active.gd" id="6_8erbr"]
+[ext_resource type="Script" path="res://scenes/HandAnimation.gd" id="6_jxjrx"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
 [ext_resource type="PackedScene" path="res://scenes/gui.tscn" id="8_dk45a"]
@@ -299,6 +300,7 @@ script = ExtResource("2_8cem0")
 libraries = {
 "": SubResource("AnimationLibrary_l011y")
 }
+script = ExtResource("6_jxjrx")
 
 [node name="HandSprite" type="Sprite2D" parent="ObjectManager/Hand"]
 position = Vector2(-34, -1)
