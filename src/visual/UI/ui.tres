@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b50x7qvv4laqd"]
+
+[ext_resource type="FontFile" uid="uid://dh6rs124bh0ob" path="res://visual/UI/JosefinSans-SemiBold.ttf" id="1_nmibn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkb1r"]
+bg_color = Color(0.6, 0.6, 0.6, 0.32549)
+
+[resource]
+Button/fonts/font = ExtResource("1_nmibn")
+Button/styles/disabled = SubResource("StyleBoxFlat_bkb1r")

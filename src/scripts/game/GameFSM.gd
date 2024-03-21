@@ -18,7 +18,7 @@ var current_lives:int
 
 func bread_is_edible () -> bool:
 	if temperature < bread_temperature_edible_spectrum.y and \
-			temperature > bread_temperature_edible_spectrum: 
+			temperature > bread_temperature_edible_spectrum.x: 
 		return true
 	return false
 

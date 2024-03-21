@@ -15,8 +15,13 @@ run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://visual/legacy/bread_128.png"
 
+[audio]
+
+buses/default_bus_layout="res://audio/default_bus_layout.tres"
+
 [display]
 
+window/size/resizable=false
 mouse_cursor/custom_image="res://visual/legacy/bread_32.png"
 
 [input]
