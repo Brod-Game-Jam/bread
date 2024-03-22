@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var settings = $Settings
 @onready var bread = $Main/Container/Bread
 @onready var toaster_player = $Toaster/AnimationPlayer
+@onready var effect = $Effect
 
 func _on_return_pressed():
 	labels.visible = true
@@ -27,3 +28,6 @@ func _ready():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+func _on_mouse_entered():
+	effect.play(0.0)

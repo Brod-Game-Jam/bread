@@ -17,5 +17,5 @@ func _process(delta):
 	$Heat.value = fsm.temperature
 
 func update_health(value):
-	for i in fsm.max_lives:
+	for i in value:
 		$Health.get_child(i).visible = value > i

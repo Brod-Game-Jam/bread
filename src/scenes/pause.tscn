@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://pjc34hycabbm"]
+[gd_scene load_steps=5 format=3 uid="uid://pjc34hycabbm"]
 
 [ext_resource type="Script" path="res://scripts/UI/Pause.gd" id="1_qg7b3"]
 [ext_resource type="Theme" uid="uid://b50x7qvv4laqd" path="res://visual/UI/ui.tres" id="1_twxlh"]
 [ext_resource type="PackedScene" uid="uid://uy2vcwempyaw" path="res://scenes/options.tscn" id="2_2uumb"]
+[ext_resource type="AudioStream" uid="uid://bfk3c631n11u6" path="res://audio/legacy/bop.mp3" id="4_y1wi5"]
 
 [node name="Menu" type="CenterContainer"]
 anchors_preset = 15
@@ -14,8 +15,6 @@ theme = ExtResource("1_twxlh")
 script = ExtResource("1_qg7b3")
 
 [node name="Option" type="CanvasLayer" parent="."]
-offset = Vector2(-65, -100)
-transform = Transform2D(1, 0, 0, 1, -65, -100)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Option"]
 anchors_preset = 8
@@ -23,43 +22,58 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.5
-offset_top = -17.5
-offset_right = 30.5
-offset_bottom = 17.5
+offset_left = -110.0
+offset_top = -106.0
+offset_right = 110.0
+offset_bottom = 106.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Options" parent="Option/VBoxContainer" instance=ExtResource("2_2uumb")]
+layout_mode = 2
+
 [node name="Return" type="Button" parent="Option/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme = ExtResource("1_twxlh")
 text = "Return"
-
-[node name="Options" parent="Option/VBoxContainer" instance=ExtResource("2_2uumb")]
-layout_mode = 2
 
 [node name="PauseMenu" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
 [node name="Resume" type="Button" parent="PauseMenu"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "Resume"
 
 [node name="Options" type="Button" parent="PauseMenu"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "Options"
 
 [node name="Title Screen" type="Button" parent="PauseMenu"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "Title Screen"
 
 [node name="Quit" type="Button" parent="PauseMenu"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "Exit Game"
 
+[node name="Effect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_y1wi5")
+volume_db = -5.0
+bus = &"Effects"
+
+[connection signal="mouse_entered" from="Option/VBoxContainer/Return" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Option/VBoxContainer/Return" to="." method="_on_return_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/Resume" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/Options" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/Title Screen" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/Title Screen" to="." method="_on_title_screen_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/Quit" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/Quit" to="." method="_on_quit_pressed"]

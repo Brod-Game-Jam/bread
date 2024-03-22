@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=44 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scripts/HandAnimation.gd" id="6_jxjrx"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
+[ext_resource type="Texture2D" uid="uid://bxriboiidwjgd" path="res://visual/UI/croissant-120.png" id="7_hfh8a"]
 [ext_resource type="Texture2D" uid="uid://bw2o7nlldc5wd" path="res://visual/UI/Temperature.png" id="7_ny5ov"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
 [ext_resource type="Texture2D" uid="uid://dd6acriwg30kq" path="res://visual/UI/Temperature-Filled.png" id="8_tey1d"]
@@ -290,14 +291,30 @@ mouse_filter = 1
 [node name="GUI" type="CanvasLayer" parent="VisualManager"]
 script = ExtResource("6_2vw2c")
 
-[node name="Health" type="Control" parent="VisualManager/GUI"]
-layout_mode = 3
+[node name="Health" type="VBoxContainer" parent="VisualManager/GUI"]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = 150.0
+offset_right = 48.0
+offset_bottom = -130.0
 grow_horizontal = 0
 grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="1" type="TextureRect" parent="VisualManager/GUI/Health"]
+layout_mode = 2
+texture = ExtResource("7_hfh8a")
+
+[node name="2" type="TextureRect" parent="VisualManager/GUI/Health"]
+layout_mode = 2
+texture = ExtResource("7_hfh8a")
+
+[node name="3" type="TextureRect" parent="VisualManager/GUI/Health"]
+layout_mode = 2
+texture = ExtResource("7_hfh8a")
 
 [node name="HeatIcon" type="Sprite2D" parent="VisualManager/GUI"]
 z_index = 1
@@ -316,9 +333,9 @@ libraries = {
 custom_minimum_size = Vector2(50, 400)
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = -5.0
+offset_left = -1.0
 offset_top = 14.0
-offset_right = 195.0
+offset_right = 199.0
 offset_bottom = 1278.0
 grow_vertical = 2
 scale = Vector2(0.48, 0.48)
