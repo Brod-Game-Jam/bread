@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://pjc34hycabbm"]
 
 [ext_resource type="Script" path="res://scripts/UI/Pause.gd" id="1_qg7b3"]
-[ext_resource type="PackedScene" path="res://scenes/options.tscn" id="2_2uumb"]
+[ext_resource type="PackedScene" uid="uid://uy2vcwempyaw" path="res://scenes/options.tscn" id="2_2uumb"]
 
 [node name="Menu" type="CenterContainer"]
 anchors_preset = 15
