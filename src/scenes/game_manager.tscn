@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=45 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://scripts/Player/Grabbed.gd" id="11_41njw"]
 [ext_resource type="Texture2D" uid="uid://cw1an3ah2bue1" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
 [ext_resource type="Script" path="res://scripts/Toaster.gd" id="14_7eykj"]
+[ext_resource type="Script" path="res://scenes/Camera2D.gd" id="14_fifg1"]
 
 [sub_resource type="Animation" id="Animation_au8v7"]
 resource_name = "Bite"
@@ -363,6 +364,7 @@ follow_viewport_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(576, 324)
+script = ExtResource("14_fifg1")
 
 [node name="ObjectManager" type="Node2D" parent="."]
 
