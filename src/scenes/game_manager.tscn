@@ -303,7 +303,6 @@ grow_vertical = 2
 z_index = 1
 position = Vector2(51.489, 498.511)
 rotation = 0.174533
-scale = Vector2(1, 1)
 texture = ExtResource("10_lekmv")
 centered = false
 

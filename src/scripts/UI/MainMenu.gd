@@ -1,4 +1,4 @@
-extends MarginContainer
+extends CanvasLayer
 
 @onready var labels = $Main
 @onready var settings = $Settings

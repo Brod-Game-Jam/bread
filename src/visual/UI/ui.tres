@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b50x7qvv4laqd"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b50x7qvv4laqd"]
 
 [ext_resource type="FontFile" uid="uid://dh6rs124bh0ob" path="res://visual/UI/JosefinSans-SemiBold.ttf" id="1_nmibn"]
+[ext_resource type="FontFile" uid="uid://dxrnj1pqqlp64" path="res://visual/UI/JosefinSans-Regular.ttf" id="2_3uri8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkb1r"]
 bg_color = Color(0.6, 0.6, 0.6, 0.32549)
@@ -8,3 +9,9 @@ bg_color = Color(0.6, 0.6, 0.6, 0.32549)
 [resource]
 Button/fonts/font = ExtResource("1_nmibn")
 Button/styles/disabled = SubResource("StyleBoxFlat_bkb1r")
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("2_3uri8")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10

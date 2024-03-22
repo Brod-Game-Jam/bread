@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://xqyt5cm8sigv"]
+[gd_scene load_steps=14 format=3 uid="uid://xqyt5cm8sigv"]
 
 [ext_resource type="Theme" uid="uid://b50x7qvv4laqd" path="res://visual/UI/ui.tres" id="1_aw7sc"]
 [ext_resource type="Script" path="res://scripts/UI/MainMenu.gd" id="1_kbsxm"]
 [ext_resource type="AudioStream" uid="uid://dtftrd4polvve" path="res://audio/Caution_The_bread_is_hot.wav" id="2_cab1f"]
 [ext_resource type="Texture2D" uid="uid://vreytse75mbn" path="res://visual/legacy/bread_128.png" id="3_6o37r"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="4_q78hb"]
+[ext_resource type="Texture2D" uid="uid://crqlvcl1m3t2w" path="res://visual/UI/Main-menu.png" id="7_1vjed"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="7_658p8"]
-[ext_resource type="PackedScene" path="res://scenes/options.tscn" id="9_ccilo"]
+[ext_resource type="PackedScene" uid="uid://uy2vcwempyaw" path="res://scenes/options.tscn" id="9_ccilo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2uaf"]
 size = Vector2(92.25, 85.375)
@@ -63,23 +64,16 @@ _data = {
 "bread_launch": SubResource("Animation_v43t8")
 }
 
-[node name="MainMenu" type="MarginContainer"]
+[node name="MainMenu" type="CanvasLayer"]
 process_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("1_aw7sc")
-theme_override_constants/margin_left = 120
-theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 120
-theme_override_constants/margin_bottom = 120
 script = ExtResource("1_kbsxm")
 
-[node name="Background" type="AudioStreamPlayer2D" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_1vjed")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(1032, 50)
 stream = ExtResource("2_cab1f")
 autoplay = true
@@ -87,9 +81,13 @@ bus = &"Music"
 
 [node name="Main" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
+offset_left = 160.0
+offset_top = 284.0
+offset_right = 260.0
+offset_bottom = 384.0
 size_flags_horizontal = 0
 size_flags_vertical = 3
+theme = ExtResource("1_aw7sc")
 
 [node name="Container" type="VBoxContainer" parent="Main"]
 layout_mode = 2
@@ -128,25 +126,22 @@ text = "Quit"
 
 [node name="Version" type="Label" parent="Main/Container"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.87451, 0.509804, 0.298039, 1)
 text = "bred team"
 
-[node name="Settings" type="CanvasLayer" parent="."]
-offset = Vector2(45, 20)
-transform = Transform2D(1, 0, 0, 1, 45, 20)
-follow_viewport_enabled = true
-
-[node name="Settings" type="VBoxContainer" parent="Settings"]
+[node name="Settings" type="VBoxContainer" parent="."]
 offset_left = 425.0
 offset_top = 226.0
 offset_right = 486.0
 offset_bottom = 261.0
+theme = ExtResource("1_aw7sc")
 alignment = 1
 
-[node name="Return" type="Button" parent="Settings/Settings"]
+[node name="Return" type="Button" parent="Settings"]
 layout_mode = 2
 text = "Return"
 
-[node name="Options" parent="Settings/Settings" instance=ExtResource("9_ccilo")]
+[node name="Options" parent="Settings" instance=ExtResource("9_ccilo")]
 layout_mode = 2
 
 [node name="Toaster" type="Node2D" parent="."]
@@ -168,4 +163,4 @@ libraries = {
 [connection signal="pressed" from="Main/Container/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Main/Container/Options" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Main/Container/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Settings/Settings/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Settings/Return" to="." method="_on_return_pressed"]
