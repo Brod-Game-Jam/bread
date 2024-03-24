@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=49 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://bucuwvr5dbuy0" path="res://audio/ost/perc_mid.ogg" id="8_53fho"]
 [ext_resource type="PackedScene" uid="uid://4hxvneoe1jtw" path="res://scenes/gui.tscn" id="8_dk45a"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
+[ext_resource type="Script" path="res://scenes/AudioStreamPlayer2DPercentage.gd" id="8_hbxqi"]
 [ext_resource type="AudioStream" uid="uid://b7mngnb3eroul" path="res://audio/ost/perc_high.ogg" id="9_h76kj"]
 [ext_resource type="AudioStream" uid="uid://b4goui5eiyimu" path="res://audio/ost/perc_extreme.ogg" id="10_povob"]
 [ext_resource type="PackedScene" uid="uid://pjc34hycabbm" path="res://scenes/pause.tscn" id="10_q2nwk"]
@@ -256,33 +257,39 @@ position = Vector2(120, 80)
 stream = ExtResource("6_pudrb")
 panning_strength = 0.0
 bus = &"Music"
+script = ExtResource("8_hbxqi")
 
 [node name="Perc1" type="AudioStreamPlayer2D" parent="MusicManager/Toasting"]
 stream = ExtResource("7_gm2qn")
 panning_strength = 0.0
 bus = &"Music"
+script = ExtResource("8_hbxqi")
 
 [node name="Perc2" type="AudioStreamPlayer2D" parent="MusicManager/Toasting"]
 stream = ExtResource("8_53fho")
 volume_db = -34.618
 panning_strength = 0.0
 bus = &"Music"
+script = ExtResource("8_hbxqi")
 
 [node name="Perc3" type="AudioStreamPlayer2D" parent="MusicManager/Toasting"]
 stream = ExtResource("9_h76kj")
 panning_strength = 0.0
 bus = &"Music"
+script = ExtResource("8_hbxqi")
 
 [node name="Perc4" type="AudioStreamPlayer2D" parent="MusicManager/Toasting"]
 stream = ExtResource("10_povob")
 panning_strength = 0.0
 bus = &"Music"
+script = ExtResource("8_hbxqi")
 
 [node name="Airborne" type="AudioStreamPlayer2D" parent="MusicManager"]
 position = Vector2(120, 80)
 stream = ExtResource("6_x76wp")
 panning_strength = 0.0
 bus = &"Music"
+script = ExtResource("8_hbxqi")
 
 [node name="VisualManager" type="Control" parent="."]
 layout_mode = 3

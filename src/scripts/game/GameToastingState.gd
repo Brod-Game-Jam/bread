@@ -20,7 +20,6 @@ func _state_update(_delta: float):
 		state_machine.bread.temperature += _delta*temperature_rise_per_second
 		var bread_temperature_ratio = (state_machine.bread.temperature/state_machine.max_temperature)
 		var sub_number = bread_temperature_ratio*4.0-0.5
-		print(round(sub_number))
 		state_machine.music_manager.switch_sub_track(round(sub_number))
 		if state_machine.bread.temperature >= state_machine.max_temperature:
 			state_machine.bread.temperature = state_machine.max_temperature
