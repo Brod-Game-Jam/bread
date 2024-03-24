@@ -273,7 +273,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 
 [node name="Background" type="Sprite2D" parent="VisualManager/Background2"]
-position = Vector2(546, 359)
+position = Vector2(576, 324)
 scale = Vector2(0.249614, 0.249614)
 texture = ExtResource("3_faw3r")
 
