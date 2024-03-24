@@ -17,6 +17,7 @@ func _enter_state():
 	state_machine.bread.temperature = state_machine.max_temperature
 	bread_too_hot = true
 	bread_sent_airborne.emit()
+	state_machine.toaster.get_child(2).play()
 
 func _exit_state():
 	pass
