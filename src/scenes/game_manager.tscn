@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=48 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -10,11 +10,18 @@
 [ext_resource type="Script" path="res://scripts/player/Hand.gd" id="4_jksnh"]
 [ext_resource type="Script" path="res://scripts/game/GameLoseState.gd" id="5_6kj84"]
 [ext_resource type="Script" path="res://scripts/player/Active.gd" id="6_8erbr"]
+[ext_resource type="Script" path="res://scenes/MusicManager.gd" id="6_32ivp"]
 [ext_resource type="Script" path="res://scripts/HandAnimation.gd" id="6_jxjrx"]
+[ext_resource type="AudioStream" uid="uid://c32l0khuucovn" path="res://audio/ost/toaster_loop_boring.ogg" id="6_pudrb"]
+[ext_resource type="AudioStream" uid="uid://ygdhgxnbp6b4" path="res://audio/ost/airborne_loop_boring.ogg" id="6_x76wp"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
+[ext_resource type="AudioStream" uid="uid://0vlwuli0gwgl" path="res://audio/ost/perc_low.ogg" id="7_gm2qn"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
+[ext_resource type="AudioStream" uid="uid://bucuwvr5dbuy0" path="res://audio/ost/perc_mid.ogg" id="8_53fho"]
 [ext_resource type="PackedScene" uid="uid://4hxvneoe1jtw" path="res://scenes/gui.tscn" id="8_dk45a"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
+[ext_resource type="AudioStream" uid="uid://b7mngnb3eroul" path="res://audio/ost/perc_high.ogg" id="9_h76kj"]
+[ext_resource type="AudioStream" uid="uid://b4goui5eiyimu" path="res://audio/ost/perc_extreme.ogg" id="10_povob"]
 [ext_resource type="PackedScene" uid="uid://pjc34hycabbm" path="res://scenes/pause.tscn" id="10_q2nwk"]
 [ext_resource type="Script" path="res://scripts/Player/Grabbed.gd" id="11_41njw"]
 [ext_resource type="Texture2D" uid="uid://cwmgbwpenoiow" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
@@ -216,12 +223,13 @@ size = Vector2(56, 787.5)
 
 [node name="GameManager" type="Node2D"]
 
-[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("bread", "hand", "toaster", "current_state")]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("bread", "hand", "toaster", "music_manager", "current_state")]
 script = ExtResource("1_uk4h5")
 bread_size_coefficient = 1.0
 bread = NodePath("../ObjectManager/Bread")
 hand = NodePath("../ObjectManager/Hand")
 toaster = NodePath("../ObjectManager/Toaster")
+music_manager = NodePath("../MusicManager")
 current_state = NodePath("Toasting")
 
 [node name="Start" type="Node" parent="FiniteStateMachine"]
@@ -237,6 +245,44 @@ cool_bread_color = Color(0.403922, 0.592157, 1, 1)
 
 [node name="Lose" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("5_6kj84")
+
+[node name="MusicManager" type="Node" parent="." node_paths=PackedStringArray("main_tracks", "sub_tracks")]
+script = ExtResource("6_32ivp")
+main_tracks = [NodePath("Toasting"), NodePath("Airborne")]
+sub_tracks = [NodePath("Toasting/Perc1"), NodePath("Toasting/Perc2"), NodePath("Toasting/Perc3"), NodePath("Toasting/Perc4")]
+
+[node name="Toasting" type="AudioStreamPlayer2D" parent="MusicManager"]
+position = Vector2(120, 80)
+stream = ExtResource("6_pudrb")
+panning_strength = 0.0
+bus = &"Music"
+
+[node name="Perc1" type="AudioStreamPlayer2D" parent="MusicManager/Toasting"]
+stream = ExtResource("7_gm2qn")
+panning_strength = 0.0
+bus = &"Music"
+
+[node name="Perc2" type="AudioStreamPlayer2D" parent="MusicManager/Toasting"]
+stream = ExtResource("8_53fho")
+volume_db = -34.618
+panning_strength = 0.0
+bus = &"Music"
+
+[node name="Perc3" type="AudioStreamPlayer2D" parent="MusicManager/Toasting"]
+stream = ExtResource("9_h76kj")
+panning_strength = 0.0
+bus = &"Music"
+
+[node name="Perc4" type="AudioStreamPlayer2D" parent="MusicManager/Toasting"]
+stream = ExtResource("10_povob")
+panning_strength = 0.0
+bus = &"Music"
+
+[node name="Airborne" type="AudioStreamPlayer2D" parent="MusicManager"]
+position = Vector2(120, 80)
+stream = ExtResource("6_x76wp")
+panning_strength = 0.0
+bus = &"Music"
 
 [node name="VisualManager" type="Control" parent="."]
 layout_mode = 3

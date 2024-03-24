@@ -6,7 +6,7 @@ var bread_body
 
 var reset_state = false
 var grabbed_state = false
-
+var temperature:float = -1
 var toaster_constraints_instance
 
 signal bread_dropped
