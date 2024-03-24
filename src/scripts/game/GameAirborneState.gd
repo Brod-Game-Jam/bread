@@ -17,7 +17,7 @@ func _enter_state():
 	state_machine.bread.temperature = state_machine.max_temperature
 	bread_too_hot = true
 	bread_sent_airborne.emit()
-	state_machine.toaster.get_child(2).play()
+	$"Send".play()
 
 func _exit_state():
 	pass
@@ -58,3 +58,4 @@ func _state_physics_update(_delta: float):
 func _on_bread_dropped():
 	# TODO check if game over
 	state_machine._change_state(toaster_state)
+	$"Drop".play()
