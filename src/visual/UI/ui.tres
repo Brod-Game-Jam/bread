@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://svebvlnbqgyd"]
 
-[ext_resource type="FontFile" uid="uid://8cjylughexj4" path="res://visual/UI/JosefinSans-SemiBold.ttf" id="1_nmibn"]
-[ext_resource type="FontFile" uid="uid://dr5fnsbmf6d1e" path="res://visual/UI/JosefinSans-Regular.ttf" id="2_3uri8"]
+[ext_resource type="FontFile" uid="uid://dh6rs124bh0ob" path="res://visual/UI/JosefinSans-SemiBold.ttf" id="1_nmibn"]
+[ext_resource type="FontFile" uid="uid://dxrnj1pqqlp64" path="res://visual/UI/JosefinSans-Regular.ttf" id="2_3uri8"]
 [ext_resource type="StyleBox" uid="uid://dyqsudwqkimec" path="res://visual/UI/box_flat_pink.tres" id="3_vkf7n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbb5s"]
