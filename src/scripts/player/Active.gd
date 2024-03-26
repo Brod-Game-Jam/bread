@@ -14,9 +14,12 @@ var vertical_slap_force = -100;
 var bread;
 var bread_near = false;
 
+var fsm
+
 func _enter_state():
 	bread = get_node("../../../Bread")
 	hand = get_node("../../.")
+	fsm = get_node("../../../../FiniteStateMachine")
 
 func _exit_state():
 	pass
@@ -46,8 +49,15 @@ func _state_physics_update(_delta: float):
 		emit_signal("strike", dir)
 		
 	if (Input.is_action_just_pressed("Grab") && bread_near):
-		emit_signal("pinch")
-		state_machine._change_state(grabbed_state)
+		if(fsm.bread_is_edible()):
+			emit_signal("pinch")
+			state_machine._change_state(grabbed_state)
+		elif (fsm.bread_is_too_hot()):
+			#play ouch anim
+			pass
+		elif (fsm.bread_is_too_cold()):
+			#something?
+			pass
 
 func _on_area_2d_body_entered(body):
 	bread_near = true;

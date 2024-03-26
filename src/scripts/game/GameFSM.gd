@@ -22,6 +22,16 @@ func bread_is_edible () -> bool:
 		return true
 	return false
 
+func bread_is_too_hot () -> bool:
+	if bread.temperature > bread_temperature_edible_spectrum.y:
+		return true
+	return false
+		
+func bread_is_too_cold () -> bool:
+	if bread.temperature < bread_temperature_edible_spectrum.x: 
+		return true
+	return false
+
 func _ready():
 	bread.bread_dropped.connect(on_bread_dropped)
 	$Toasting.bread_started_heating.connect(on_bread_started_heating)

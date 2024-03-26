@@ -5,7 +5,7 @@ signal bread_heated
 signal bread_started_heating
 
 @onready var airborne_state:State = $"../Airborne"
-@export var temperature_rise_per_second:float = 200/10.64
+@export var temperature_rise_per_second:float = 200/3
 
 func _enter_state():
 	state_machine.bread._reset_bread()

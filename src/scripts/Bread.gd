@@ -1,13 +1,19 @@
 extends RigidBody2D
 var hand
 var toaster
+var hand_grabbed
 var toaster_constraints
 var bread_body
+var bread_sprite
 
 var reset_state = false
 var grabbed_state = false
 var temperature:float = -1
 var toaster_constraints_instance
+
+var bread_chunks = ["left", "top_left", "top", "top_right",
+					"right", "bottom_right", "bottom", 
+					"bottom_left"]
 
 signal bread_dropped
 
@@ -16,6 +22,21 @@ func _ready():
 	# Retrieve nodes
 	hand = get_node("../Hand")
 	toaster = get_node("../Toaster")
+	hand_grabbed = get_node("../Hand/FiniteStateMachine/Grabbed")
+	bread_sprite = get_node_or_null("BreadSprite") as Node2D
+	
+	
+	# Connect signals
+	hand_grabbed.bite.connect(bite)
+	
+func bite():
+	
+	# Bite a random chunk
+	if(bread_chunks.size() > 0):
+		var index = randi_range(0,bread_chunks.size()-1)
+		var dir = bread_chunks[index]
+		bread_chunks.remove_at(index)
+		bread_sprite.bite(dir)
 	
 func _reset_bread():
 	reset_state = true
