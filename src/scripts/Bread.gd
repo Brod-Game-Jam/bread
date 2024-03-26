@@ -16,6 +16,7 @@ var bread_chunks = ["left", "top_left", "top", "top_right",
 					"bottom_left"]
 
 signal bread_dropped
+signal bread_bit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,7 +31,7 @@ func _ready():
 	hand_grabbed.bite.connect(bite)
 	
 func bite():
-	
+	bread_bit.emit()
 	# Bite a random chunk
 	if(bread_chunks.size() > 0):
 		var index = randi_range(0,bread_chunks.size()-1)
@@ -67,9 +68,5 @@ func _integrate_forces(state):
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	# Temporary features for debugging
-	if Input.is_action_just_pressed("Temp_expulse"):
-		_toaster_expulsion()
-	if Input.is_action_just_pressed("Temp_reset"):
-		reset_state = true
+	pass
 

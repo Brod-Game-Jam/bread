@@ -2,8 +2,8 @@ extends FiniteStateMachine
 
 @export var max_temperature:float = 200
 
-@export var max_lives:int
-var current_lives:int
+@export var max_lives:int = 3
+var current_lives:int = 3
 
 @export var bread_temperature_edible_spectrum = Vector2(30, 50)
 
@@ -33,11 +33,16 @@ func bread_is_too_cold () -> bool:
 	return false
 
 func _ready():
+	current_lives = max_lives
 	bread.bread_dropped.connect(on_bread_dropped)
 	$Toasting.bread_started_heating.connect(on_bread_started_heating)
 	$Airborne.bread_sent_airborne.connect(on_sent_bread)
 	music_manager.start_playing()
+	bread.bread_bit.connect(on_bread_bit)
 	super._ready()
+
+func on_bread_bit():
+	music_manager.increase_pitch(0.1)
 
 func on_bread_started_heating ():
 	music_manager.switch_main_track(0)

@@ -20,6 +20,12 @@ func start_playing():
 	for track in sub_tracks:
 		track.play()
 
+func increase_pitch (increment:float):
+	for track in main_tracks:
+		track.pitch_scale += increment
+	for track in sub_tracks:
+		track.pitch_scale += increment
+
 func switch_main_track(track:int):
 	active_main_track = track
 
