@@ -1,6 +1,7 @@
 extends State
 
 signal unpinch
+signal bite
 
 @onready var active_state:State = $"../Active"
 @onready var hand:Node2D = $"../../"
@@ -20,6 +21,7 @@ func _state_update(_delta: float):
 		state_machine._change_state(active_state)
 	if (Input.is_action_just_pressed("Bite")):
 		hand.visible = false
+		emit_signal("bite")
 
 func _state_physics_update(_delta: float):
 	pass

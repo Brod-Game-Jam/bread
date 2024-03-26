@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://pjc34hycabbm"]
 
 [ext_resource type="Script" path="res://scripts/UI/Pause.gd" id="1_qg7b3"]
-[ext_resource type="Theme" uid="uid://b50x7qvv4laqd" path="res://visual/UI/ui.tres" id="1_twxlh"]
+[ext_resource type="Theme" uid="uid://svebvlnbqgyd" path="res://visual/UI/ui.tres" id="1_twxlh"]
 [ext_resource type="PackedScene" uid="uid://uy2vcwempyaw" path="res://scenes/options.tscn" id="2_2uumb"]
-[ext_resource type="AudioStream" uid="uid://bfk3c631n11u6" path="res://audio/legacy/bop.mp3" id="4_y1wi5"]
+[ext_resource type="AudioStream" uid="uid://bfk3c631n11u6" path="res://audio/sfx/bop.mp3" id="4_k1oix"]
 
 [node name="Menu" type="CenterContainer"]
 anchors_preset = 15
@@ -63,7 +63,7 @@ layout_mode = 2
 text = "Exit Game"
 
 [node name="Effect" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_y1wi5")
+stream = ExtResource("4_k1oix")
 volume_db = -5.0
 bus = &"Effects"
 

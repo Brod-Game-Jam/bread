@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://uy2vcwempyaw"]
 
 [ext_resource type="Script" path="res://scripts/UI/VolumeSlider.gd" id="1_fbxi5"]
-[ext_resource type="Theme" uid="uid://b50x7qvv4laqd" path="res://visual/UI/ui.tres" id="1_inwtk"]
+[ext_resource type="Theme" uid="uid://svebvlnbqgyd" path="res://visual/UI/ui.tres" id="1_inwtk"]
 [ext_resource type="Script" path="res://scripts/UI/SubSlider.gd" id="2_wjg33"]
 [ext_resource type="AudioStream" uid="uid://7vltso677x7a" path="res://audio/legacy/rej.mp3" id="4_hbivo"]
 
