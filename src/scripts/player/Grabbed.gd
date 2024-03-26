@@ -3,6 +3,7 @@ extends State
 signal unpinch
 
 @onready var active_state:State = $"../Active"
+@onready var hand:Node2D = $"../../"
 var bread
 
 func _enter_state():
@@ -10,13 +11,15 @@ func _enter_state():
 	bread.grabbed_state = true
 
 func _exit_state():
-	pass
+	hand.visible = true
 
 func _state_update(_delta: float):
 	if (Input.is_action_just_released("Grab")):
 		bread.grabbed_state = false
 		emit_signal("unpinch")
 		state_machine._change_state(active_state)
+	if (Input.is_action_just_pressed("Bite")):
+		hand.visible = false
 
 func _state_physics_update(_delta: float):
 	pass

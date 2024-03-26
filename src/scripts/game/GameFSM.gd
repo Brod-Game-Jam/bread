@@ -1,7 +1,6 @@
 extends FiniteStateMachine
 
 @export var max_temperature:float = 200
-var temperature:float 
 
 @export var max_lives:int
 var current_lives:int
@@ -15,6 +14,7 @@ var current_lives:int
 @export var bread:Node2D
 @export var hand:Node2D
 @export var toaster:Node2D
+@export var music_manager:Node
 
 func bread_is_edible () -> bool:
 	if temperature < bread_temperature_edible_spectrum.y and \
@@ -23,14 +23,29 @@ func bread_is_edible () -> bool:
 	return false
 
 func _ready():
-	super._ready()
 	bread.bread_dropped.connect(on_bread_dropped)
-	
+	$Toasting.bread_started_heating.connect(on_bread_started_heating)
+	$Airborne.bread_sent_airborne.connect(on_sent_bread)
+	music_manager.start_playing()
+	super._ready()
+
+func on_bread_started_heating ():
+	music_manager.switch_main_track(0)
+	print("sent signal")
+
+func on_sent_bread ():
+	music_manager.switch_main_track(1)
+
+
+func _change_temperature(delta_t):
+	bread.temperature += delta_t
+	bread.temperature = clampi(bread.temperature, 0, max_temperature)
+
 func _process(delta):
 	super._process(delta)
 
 func on_bread_dropped():
-	temperature = 0
+	bread.temperature = 0
 	if current_state == states[2]:
 		current_state._on_bread_dropped()
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=41 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -9,80 +9,16 @@
 [ext_resource type="Script" path="res://scripts/game/GameAirborneState.gd" id="4_8h8ou"]
 [ext_resource type="Script" path="res://scripts/player/Hand.gd" id="4_jksnh"]
 [ext_resource type="Script" path="res://scripts/game/GameLoseState.gd" id="5_6kj84"]
-[ext_resource type="Script" path="res://scripts/UI/GUI.gd" id="6_2vw2c"]
 [ext_resource type="Script" path="res://scripts/player/Active.gd" id="6_8erbr"]
-[ext_resource type="Script" path="res://scenes/MusicManager.gd" id="6_32ivp"]
 [ext_resource type="Script" path="res://scripts/HandAnimation.gd" id="6_jxjrx"]
-[ext_resource type="AudioStream" uid="uid://c32l0khuucovn" path="res://audio/ost/toaster_loop_boring.ogg" id="6_pudrb"]
-[ext_resource type="AudioStream" uid="uid://ygdhgxnbp6b4" path="res://audio/ost/airborne_loop_boring.ogg" id="6_x76wp"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
-[ext_resource type="AudioStream" uid="uid://0vlwuli0gwgl" path="res://audio/ost/perc_low.ogg" id="7_gm2qn"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
-[ext_resource type="Texture2D" uid="uid://bxriboiidwjgd" path="res://visual/UI/croissant-120.png" id="7_hfh8a"]
-[ext_resource type="Texture2D" uid="uid://bw2o7nlldc5wd" path="res://visual/UI/Temperature.png" id="7_ny5ov"]
-[ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
-[ext_resource type="Texture2D" uid="uid://dd6acriwg30kq" path="res://visual/UI/Temperature-Filled.png" id="8_tey1d"]
-[ext_resource type="Texture2D" uid="uid://nyjvlbcpnus3" path="res://visual/legacy/bite_bread_32.png" id="9_i2rol"]
-[ext_resource type="Texture2D" uid="uid://dlx8sgmg570su" path="res://visual/legacy/bread_32.png" id="10_lekmv"]
-[ext_resource type="AudioStream" uid="uid://bucuwvr5dbuy0" path="res://audio/ost/perc_mid.ogg" id="8_53fho"]
 [ext_resource type="PackedScene" uid="uid://4hxvneoe1jtw" path="res://scenes/gui.tscn" id="8_dk45a"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
-[ext_resource type="Script" path="res://scenes/AudioStreamPlayer2DPercentage.gd" id="8_hbxqi"]
-[ext_resource type="AudioStream" uid="uid://b7mngnb3eroul" path="res://audio/ost/perc_high.ogg" id="9_h76kj"]
-[ext_resource type="AudioStream" uid="uid://b4goui5eiyimu" path="res://audio/ost/perc_extreme.ogg" id="10_povob"]
 [ext_resource type="PackedScene" uid="uid://pjc34hycabbm" path="res://scenes/pause.tscn" id="10_q2nwk"]
 [ext_resource type="Script" path="res://scripts/Player/Grabbed.gd" id="11_41njw"]
-[ext_resource type="Texture2D" uid="uid://cwmgbwpenoiow" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
+[ext_resource type="Texture2D" uid="uid://cw1an3ah2bue1" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
 [ext_resource type="Script" path="res://scripts/Toaster.gd" id="14_7eykj"]
-[ext_resource type="Script" path="res://scenes/Camera2D.gd" id="14_fifg1"]
-
-[sub_resource type="Animation" id="Animation_au8v7"]
-resource_name = "Bite"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("10_lekmv"), ExtResource("9_i2rol")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.174533, -0.165806]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.840897, 1),
-"update": 0,
-"values": [Vector2(50, 500), Vector2(55, 495)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xmhxn"]
-_data = {
-"Bite": SubResource("Animation_au8v7")
-}
-[ext_resource type="AudioStream" uid="uid://d35fr85fxmmv6" path="res://audio/sfx/Toast_but_toast.ogg" id="26_kni6m"]
-[ext_resource type="AudioStream" uid="uid://d3cji0yl7swsc" path="res://audio/sfx/toast_but_send.ogg" id="26_t5b6t"]
-[ext_resource type="AudioStream" uid="uid://7gkbg8uhnjf0" path="res://audio/sfx/Toast_but_drop.ogg" id="29_dn4lw"]
 
 [sub_resource type="Animation" id="Animation_b0ikg"]
 length = 0.001
@@ -280,13 +216,12 @@ size = Vector2(56, 787.5)
 
 [node name="GameManager" type="Node2D"]
 
-[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("bread", "hand", "toaster", "music_manager", "current_state")]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("bread", "hand", "toaster", "current_state")]
 script = ExtResource("1_uk4h5")
 bread_size_coefficient = 1.0
 bread = NodePath("../ObjectManager/Bread")
 hand = NodePath("../ObjectManager/Hand")
 toaster = NodePath("../ObjectManager/Toaster")
-music_manager = NodePath("../MusicManager")
 current_state = NodePath("Toasting")
 
 [node name="Start" type="Node" parent="FiniteStateMachine"]
@@ -295,78 +230,13 @@ script = ExtResource("2_488ae")
 [node name="Toasting" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("3_30wgb")
 
-[node name="Enter" type="AudioStreamPlayer2D" parent="FiniteStateMachine/Toasting"]
-position = Vector2(820, 720)
-stream = ExtResource("26_kni6m")
-panning_strength = 0.0
-bus = &"Music"
-script = ExtResource("8_hbxqi")
-
 [node name="Airborne" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("4_8h8ou")
 hot_bread_color = Color(0.933333, 0, 0, 1)
 cool_bread_color = Color(0.403922, 0.592157, 1, 1)
 
-[node name="Send" type="AudioStreamPlayer2D" parent="FiniteStateMachine/Airborne"]
-position = Vector2(700, 640)
-stream = ExtResource("26_t5b6t")
-panning_strength = 0.0
-bus = &"Music"
-script = ExtResource("8_hbxqi")
-
-[node name="Drop" type="AudioStreamPlayer2D" parent="FiniteStateMachine/Airborne"]
-position = Vector2(1060, 880)
-stream = ExtResource("29_dn4lw")
-panning_strength = 0.0
-bus = &"Music"
-script = ExtResource("8_hbxqi")
-
 [node name="Lose" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("5_6kj84")
-
-[node name="MusicManager" type="Node" parent="." node_paths=PackedStringArray("main_tracks", "sub_tracks")]
-script = ExtResource("6_32ivp")
-main_tracks = [NodePath("Toasting"), NodePath("Airborne")]
-sub_tracks = [NodePath("Toasting/Perc1"), NodePath("Toasting/Perc2"), NodePath("Toasting/Perc3"), NodePath("Toasting/Perc4")]
-
-[node name="Toasting" type="AudioStreamPlayer2D" parent="MusicManager"]
-position = Vector2(120, 80)
-stream = ExtResource("6_pudrb")
-panning_strength = 0.0
-bus = &"Music"
-script = ExtResource("8_hbxqi")
-
-[node name="Perc1" type="AudioStreamPlayer2D" parent="MusicManager/Toasting"]
-stream = ExtResource("7_gm2qn")
-panning_strength = 0.0
-bus = &"Music"
-script = ExtResource("8_hbxqi")
-
-[node name="Perc2" type="AudioStreamPlayer2D" parent="MusicManager/Toasting"]
-stream = ExtResource("8_53fho")
-volume_db = -34.618
-panning_strength = 0.0
-bus = &"Music"
-script = ExtResource("8_hbxqi")
-
-[node name="Perc3" type="AudioStreamPlayer2D" parent="MusicManager/Toasting"]
-stream = ExtResource("9_h76kj")
-panning_strength = 0.0
-bus = &"Music"
-script = ExtResource("8_hbxqi")
-
-[node name="Perc4" type="AudioStreamPlayer2D" parent="MusicManager/Toasting"]
-stream = ExtResource("10_povob")
-panning_strength = 0.0
-bus = &"Music"
-script = ExtResource("8_hbxqi")
-
-[node name="Airborne" type="AudioStreamPlayer2D" parent="MusicManager"]
-position = Vector2(120, 80)
-stream = ExtResource("6_x76wp")
-panning_strength = 0.0
-bus = &"Music"
-script = ExtResource("8_hbxqi")
 
 [node name="VisualManager" type="Control" parent="."]
 layout_mode = 3
@@ -379,72 +249,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="GUI" type="CanvasLayer" parent="VisualManager"]
-script = ExtResource("6_2vw2c")
-
-[node name="Health" type="VBoxContainer" parent="VisualManager/GUI"]
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -72.0
-offset_top = 150.0
-offset_right = 48.0
-offset_bottom = -130.0
-grow_horizontal = 0
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-
-[node name="1" type="TextureRect" parent="VisualManager/GUI/Health"]
-layout_mode = 2
-texture = ExtResource("7_hfh8a")
-
-[node name="2" type="TextureRect" parent="VisualManager/GUI/Health"]
-layout_mode = 2
-texture = ExtResource("7_hfh8a")
-
-[node name="3" type="TextureRect" parent="VisualManager/GUI/Health"]
-layout_mode = 2
-texture = ExtResource("7_hfh8a")
-
-[node name="HeatIcon" type="Sprite2D" parent="VisualManager/GUI"]
-z_index = 1
-position = Vector2(51.489, 498.511)
-rotation = 0.174533
-texture = ExtResource("10_lekmv")
-centered = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="VisualManager/GUI"]
-root_node = NodePath("../HeatIcon")
-libraries = {
-"": SubResource("AnimationLibrary_xmhxn")
-}
-
-[node name="Heat" type="TextureProgressBar" parent="VisualManager/GUI"]
-custom_minimum_size = Vector2(50, 400)
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 14.0
-offset_right = 199.0
-offset_bottom = 1278.0
-grow_vertical = 2
-scale = Vector2(0.48, 0.48)
-max_value = 200.0
-step = 0.5
-value = 30.0
-fill_mode = 3
-texture_under = ExtResource("7_ny5ov")
-texture_progress = ExtResource("8_tey1d")
-
 [node name="Background" type="CanvasLayer" parent="VisualManager"]
 layer = -1
 follow_viewport_enabled = true
 
-[node name="Background" type="Sprite2D" parent="VisualManager/Background"]
-position = Vector2(576, 324)
-scale = Vector2(0.249614, 0.249614)
-texture = ExtResource("3_faw3r")
+[node name="GUI2" type="CanvasLayer" parent="VisualManager"]
+follow_viewport_enabled = true
+
+[node name="GUI" parent="VisualManager/GUI2" instance=ExtResource("8_dk45a")]
+offset_bottom = 200.0
 
 [node name="Pause" type="CanvasLayer" parent="VisualManager"]
 process_mode = 3
@@ -452,9 +265,20 @@ follow_viewport_enabled = true
 
 [node name="Menu" parent="VisualManager/Pause" instance=ExtResource("10_q2nwk")]
 
+[node name="Background2" type="Control" parent="VisualManager"]
+custom_minimum_size = Vector2(0.955, 1.22)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Background" type="Sprite2D" parent="VisualManager/Background2"]
+position = Vector2(576, 324)
+scale = Vector2(0.249614, 0.249614)
+texture = ExtResource("3_faw3r")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(576, 324)
-script = ExtResource("14_fifg1")
 
 [node name="ObjectManager" type="Node2D" parent="."]
 

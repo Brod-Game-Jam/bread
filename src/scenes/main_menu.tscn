@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="4_q78hb"]
 [ext_resource type="Texture2D" uid="uid://crqlvcl1m3t2w" path="res://visual/UI/Main-menu.png" id="7_1vjed"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="7_658p8"]
+[ext_resource type="AudioStream" uid="uid://baeuq54rdxhtn" path="res://audio/ost/menu_single_loop.ogg" id="2_h2h4s"]
 [ext_resource type="PackedScene" uid="uid://uy2vcwempyaw" path="res://scenes/options.tscn" id="9_ccilo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2uaf"]
@@ -82,7 +83,11 @@ bus = &"Effects"
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(1032, 50)
 stream = ExtResource("2_cab1f")
+[node name="Background music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(120, 80)
+stream = ExtResource("2_h2h4s")
 autoplay = true
+panning_strength = 0.0
 bus = &"Music"
 
 [node name="Main" type="CenterContainer" parent="."]
