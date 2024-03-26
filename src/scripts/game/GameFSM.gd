@@ -18,7 +18,7 @@ var current_lives:int
 
 func bread_is_edible () -> bool:
 	if bread.temperature < bread_temperature_edible_spectrum.y and \
-			bread.temperature > bread_temperature_edible_spectrum: 
+			bread.temperature > bread_temperature_edible_spectrum.x: 
 		return true
 	return false
 
@@ -36,6 +36,8 @@ func on_bread_started_heating ():
 func on_sent_bread ():
 	music_manager.switch_main_track(1)
 
+func get_temperature():
+	return bread.temperature
 
 func _change_temperature(delta_t):
 	bread.temperature += delta_t

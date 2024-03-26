@@ -1,64 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://uy2vcwempyaw"]
+[gd_scene load_steps=5 format=3 uid="uid://uy2vcwempyaw"]
 
 [ext_resource type="Script" path="res://scripts/UI/VolumeSlider.gd" id="1_fbxi5"]
+[ext_resource type="Theme" uid="uid://svebvlnbqgyd" path="res://visual/UI/ui.tres" id="1_inwtk"]
 [ext_resource type="Script" path="res://scripts/UI/SubSlider.gd" id="2_wjg33"]
-[ext_resource type="AudioStream" uid="uid://7vltso677x7a" path="res://audio/legacy/Recording.mp3" id="3_hef5v"]
+[ext_resource type="AudioStream" uid="uid://7vltso677x7a" path="res://audio/legacy/rej.mp3" id="4_hbivo"]
 
 [node name="Options" type="Panel"]
+custom_minimum_size = Vector2(220, 184)
+theme = ExtResource("1_inwtk")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 offset_right = 200.0
-offset_bottom = 158.0
+offset_bottom = 50.0
 
-[node name="Master" type="PanelContainer" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Master" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/Master"]
-layout_mode = 2
-text = "Master Volume"
-
-[node name="Master Volume" type="HSlider" parent="VBoxContainer/Master"]
+[node name="Master Volume" type="HSlider" parent="MarginContainer/VBoxContainer/Master"]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 script = ExtResource("1_fbxi5")
 bus_name = "Master"
 
-[node name="Music" type="PanelContainer" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Master"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="Music" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/Music"]
-layout_mode = 2
-text = "Music"
-
-[node name="Music" type="HSlider" parent="VBoxContainer/Music"]
+[node name="Music" type="HSlider" parent="MarginContainer/VBoxContainer/Music"]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 script = ExtResource("1_fbxi5")
 bus_name = "Music"
 
-[node name="Effects" type="PanelContainer" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Music"]
+layout_mode = 2
+text = "Music"
+
+[node name="Effects" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/Effects"]
-layout_mode = 2
-text = "Sound effects"
-
-[node name="Effects" type="HSlider" parent="VBoxContainer/Effects"]
+[node name="Effects" type="HSlider" parent="MarginContainer/VBoxContainer/Effects"]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 script = ExtResource("2_wjg33")
-sound_file = ExtResource("3_hef5v")
+sound_file = ExtResource("4_hbivo")
 bus_name = "Effects"
 
-[connection signal="drag_ended" from="VBoxContainer/Music/Music" to="VBoxContainer/Music/Music" method="_on_drag_ended"]
-[connection signal="drag_ended" from="VBoxContainer/Effects/Effects" to="VBoxContainer/Effects/Effects" method="_on_drag_ended"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Effects"]
+layout_mode = 2
+text = "Sound effects"
+
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/Music/Music" to="MarginContainer/VBoxContainer/Music/Music" method="_on_drag_ended"]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/Effects/Effects" to="MarginContainer/VBoxContainer/Effects/Effects" method="_on_drag_ended"]

@@ -1,30 +1,83 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjkkj5bidysw0"]
+[gd_scene load_steps=14 format=3 uid="uid://xqyt5cm8sigv"]
 
+[ext_resource type="Theme" uid="uid://svebvlnbqgyd" path="res://visual/UI/ui.tres" id="1_aw7sc"]
 [ext_resource type="Script" path="res://scripts/UI/MainMenu.gd" id="1_kbsxm"]
-[ext_resource type="AudioStream" uid="uid://baeuq54rdxhtn" path="res://audio/ost/menu_single_loop.ogg" id="2_h2h4s"]
-[ext_resource type="Texture2D" uid="uid://6u8lgnallxi7" path="res://visual/main_menu/new_game.png" id="2_j11kh"]
-[ext_resource type="Texture2D" uid="uid://vreytse75mbn" path="res://visual/legacy/bread_128.png" id="3_6o37r"]
-[ext_resource type="Texture2D" uid="uid://bsy8f2xs8vstv" path="res://visual/main_menu/new_game_pressed.png" id="3_r36nt"]
-[ext_resource type="Texture2D" uid="uid://7q4ojm32uju5" path="res://visual/main_menu/new_game_hovered.png" id="4_xv5my"]
-[ext_resource type="Texture2D" uid="uid://dyhlbcnmmb3qa" path="res://visual/main_menu/settings.png" id="5_e08pw"]
-[ext_resource type="Texture2D" uid="uid://cgfw8p4et6rkk" path="res://visual/main_menu/settings_pressed.png" id="6_u6eca"]
-[ext_resource type="Texture2D" uid="uid://djy2ni7q673fg" path="res://visual/main_menu/settings_hovered.png" id="7_gyyhh"]
+[ext_resource type="AudioStream" uid="uid://cqm1xh5c3dooj" path="res://audio/ost/menu_single_loop.ogg" id="2_h2h4s"]
+[ext_resource type="AudioStream" uid="uid://bfk3c631n11u6" path="res://audio/sfx/bop.mp3" id="3_urhum"]
+[ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="4_q78hb"]
+[ext_resource type="Texture2D" uid="uid://crqlvcl1m3t2w" path="res://visual/UI/Main-menu.png" id="7_1vjed"]
+[ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="7_658p8"]
 [ext_resource type="PackedScene" uid="uid://uy2vcwempyaw" path="res://scenes/options.tscn" id="9_ccilo"]
 
-[node name="MainMenu" type="MarginContainer"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2uaf"]
+size = Vector2(92.25, 85.375)
+
+[sub_resource type="Animation" id="Animation_2mtst"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7h3es"]
+resource_name = "bread_consume"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v43t8"]
+resource_name = "bread_launch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(1, 0), Vector2i(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_774qp"]
+_data = {
+"RESET": SubResource("Animation_2mtst"),
+"bread_consume": SubResource("Animation_7h3es"),
+"bread_launch": SubResource("Animation_v43t8")
+}
+
+[node name="MainMenu" type="CanvasLayer"]
 process_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 120
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 120
-theme_override_constants/margin_bottom = 80
 script = ExtResource("1_kbsxm")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_1vjed")
+
+[node name="Effect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_urhum")
+volume_db = -5.0
+bus = &"Effects"
 
 [node name="Background music" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(120, 80)
@@ -34,52 +87,100 @@ panning_strength = 0.0
 bus = &"Music"
 
 [node name="Main" type="CenterContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 3
+custom_minimum_size = Vector2(100, 0)
+offset_left = 160.0
+offset_top = 284.0
+offset_right = 260.0
+offset_bottom = 384.0
+size_flags_horizontal = 0
 size_flags_vertical = 3
+theme = ExtResource("1_aw7sc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+[node name="Container" type="VBoxContainer" parent="Main"]
 layout_mode = 2
 
-[node name="Title" type="TextureRect" parent="Main/VBoxContainer"]
+[node name="Bread" type="RigidBody2D" parent="Main/Container"]
+position = Vector2(40, -71)
+mass = 1.25
+lock_rotation = true
+freeze = true
+
+[node name="BreadSprite" type="Sprite2D" parent="Main/Container/Bread"]
+position = Vector2(38, -67)
+scale = Vector2(0.211, 0.2)
+texture = ExtResource("4_q78hb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Container/Bread"]
+position = Vector2(43, -66)
+shape = SubResource("RectangleShape2D_b2uaf")
+
+[node name="Play" type="Button" parent="Main/Container"]
+custom_minimum_size = Vector2(150, 35)
 layout_mode = 2
-texture = ExtResource("3_6o37r")
-stretch_mode = 2
+text = "Play"
 
-[node name="New Game" type="TextureButton" parent="Main/VBoxContainer"]
+[node name="Options" type="Button" parent="Main/Container"]
+custom_minimum_size = Vector2(150, 35)
 layout_mode = 2
-texture_normal = ExtResource("2_j11kh")
-texture_pressed = ExtResource("3_r36nt")
-texture_hover = ExtResource("4_xv5my")
+text = "Options"
 
-[node name="Settings" type="TextureButton" parent="Main/VBoxContainer"]
+[node name="Quit" type="Button" parent="Main/Container"]
+custom_minimum_size = Vector2(150, 35)
 layout_mode = 2
-texture_normal = ExtResource("5_e08pw")
-texture_pressed = ExtResource("6_u6eca")
-texture_hover = ExtResource("7_gyyhh")
+text = "Quit"
 
-[node name="Version" type="Label" parent="Main/VBoxContainer"]
+[node name="Version" type="Label" parent="Main/Container"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-text = "ver 0.1
-bred team"
+theme_override_colors/font_outline_color = Color(0.54902, 0.286275, 0.12549, 1)
+theme_override_constants/outline_size = 8
+text = "bred team"
+horizontal_alignment = 1
+vertical_alignment = 2
 
-[node name="Settings" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
-offset_left = 425.0
-offset_top = 226.0
-offset_right = 486.0
-offset_bottom = 261.0
+[node name="Settings" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -106.0
+offset_right = 110.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_aw7sc")
 alignment = 1
 
-[node name="Return" type="Button" parent="Settings/VBoxContainer"]
-layout_mode = 2
-text = "Return"
-
-[node name="Options" parent="Settings/VBoxContainer" instance=ExtResource("9_ccilo")]
+[node name="Options" parent="Settings" instance=ExtResource("9_ccilo")]
 layout_mode = 2
 
-[connection signal="pressed" from="Main/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Settings/VBoxContainer/Return" to="." method="_on_return_pressed"]
+[node name="Close" type="Button" parent="Settings"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+text = "Close"
+
+[node name="Toaster" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(555, 558)
+
+[node name="Sprite2D" type="Sprite2D" parent="Toaster"]
+position = Vector2(-320, 34)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_658p8")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Toaster"]
+libraries = {
+"": SubResource("AnimationLibrary_774qp")
+}
+
+[connection signal="mouse_entered" from="Main/Container/Play" to="." method="_on_play_mouse_entered"]
+[connection signal="pressed" from="Main/Container/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="Main/Container/Options" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Main/Container/Options" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="Main/Container/Quit" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Main/Container/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="Settings/Close" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Settings/Close" to="." method="_on_return_pressed"]
