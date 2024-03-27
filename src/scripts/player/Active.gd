@@ -2,6 +2,7 @@ extends State
 
 signal strike
 signal pinch
+signal ouch
 
 @onready var grabbed_state:State = $"../Grabbed"
 
@@ -53,10 +54,11 @@ func _state_physics_update(_delta: float):
 			emit_signal("pinch")
 			state_machine._change_state(grabbed_state)
 		elif (fsm.bread_is_too_hot()):
-			#play ouch anim
+			emit_signal("ouch")
+			# TODO: make it stand still
 			pass
 		elif (fsm.bread_is_too_cold()):
-			#something?
+			# TODO: something?
 			pass
 
 func _on_area_2d_body_entered(body):

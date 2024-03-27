@@ -7,7 +7,12 @@ func _ready():
 	var grabbed = get_node("../FiniteStateMachine/Grabbed")
 	active.connect("strike",play_strike)
 	active.connect("pinch", play_pinch)
+	active.connect("ouch", play_ouch)
 	grabbed.connect("unpinch", play_unpinch)
+
+func play_ouch():
+	stop()
+	set_current_animation ("ouch")
 
 func play_pinch():
 	stop()
