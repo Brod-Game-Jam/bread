@@ -2,13 +2,13 @@
 
 [ext_resource type="Theme" uid="uid://svebvlnbqgyd" path="res://visual/UI/ui.tres" id="1_aw7sc"]
 [ext_resource type="Script" path="res://scripts/UI/MainMenu.gd" id="1_kbsxm"]
-[ext_resource type="AudioStream" uid="uid://cbti0tkbyxvuq" path="res://audio/ost/menu_single_loop.ogg" id="2_h2h4s"]
-[ext_resource type="AudioStream" uid="uid://04b2pdimdc41" path="res://audio/sfx/bop.mp3" id="3_urhum"]
+[ext_resource type="AudioStream" uid="uid://cqm1xh5c3dooj" path="res://audio/ost/menu_single_loop.ogg" id="2_h2h4s"]
+[ext_resource type="AudioStream" uid="uid://bfk3c631n11u6" path="res://audio/sfx/bop.mp3" id="3_urhum"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="4_q78hb"]
-[ext_resource type="Texture2D" uid="uid://748gg6gallxm" path="res://visual/UI/Main-menu.png" id="7_1vjed"]
+[ext_resource type="Texture2D" uid="uid://crqlvcl1m3t2w" path="res://visual/UI/Main-menu.png" id="7_1vjed"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="7_658p8"]
 [ext_resource type="PackedScene" uid="uid://uy2vcwempyaw" path="res://scenes/options.tscn" id="9_ccilo"]
-[ext_resource type="Texture2D" uid="uid://b3ap5obrcs3gh" path="res://visual/sprites/toast_back.png" id="9_g8rnu"]
+[ext_resource type="Texture2D" uid="uid://cbd6falk4gt7h" path="res://visual/sprites/toast_back.png" id="9_g8rnu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2uaf"]
 size = Vector2(92.25, 85.375)
@@ -71,7 +71,6 @@ process_mode = 3
 script = ExtResource("1_kbsxm")
 
 [node name="Background" type="TextureRect" parent="."]
-z_index = -2
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("7_1vjed")
