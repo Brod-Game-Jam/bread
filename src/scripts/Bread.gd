@@ -5,6 +5,7 @@ var hand_grabbed
 var toaster_constraints
 var bread_body
 var bread_sprite
+var bread_reset_pos
 
 var reset_state = false
 var grabbed_state = false
@@ -25,6 +26,11 @@ func _ready():
 	toaster = get_node("../Toaster")
 	hand_grabbed = get_node("../Hand/FiniteStateMachine/Grabbed")
 	bread_sprite = get_node_or_null("BreadSprite") as Node2D
+	
+	# Set the toaster position of the bread for reset
+	bread_reset_pos = toaster.position
+	bread_reset_pos.y -= 15
+	
 	
 	
 	# Connect signals
@@ -53,7 +59,7 @@ func _integrate_forces(state):
 	if reset_state:
 		state.linear_velocity = Vector2.ZERO
 		state.angular_velocity = 0
-		state.transform = Transform2D(0.0,toaster.position)
+		state.transform = Transform2D(0.0,bread_reset_pos)
 	
 	# Checks for dropped bread
 	if position.y > get_viewport_rect().size.y + 500:

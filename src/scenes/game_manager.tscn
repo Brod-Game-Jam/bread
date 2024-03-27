@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=62 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -13,28 +13,29 @@
 [ext_resource type="Script" path="res://scripts/player/Active.gd" id="6_8erbr"]
 [ext_resource type="Script" path="res://scripts/MusicManager.gd" id="6_32ivp"]
 [ext_resource type="Script" path="res://scripts/HandAnimation.gd" id="6_jxjrx"]
-[ext_resource type="AudioStream" uid="uid://c32l0khuucovn" path="res://audio/ost/toaster_loop_boring.ogg" id="6_pudrb"]
-[ext_resource type="AudioStream" uid="uid://ygdhgxnbp6b4" path="res://audio/ost/airborne_loop_boring.ogg" id="6_x76wp"]
+[ext_resource type="AudioStream" uid="uid://cv4n44rg7nf2x" path="res://audio/ost/toaster_loop_boring.ogg" id="6_pudrb"]
+[ext_resource type="AudioStream" uid="uid://dl6sndf32rvu8" path="res://audio/ost/airborne_loop_boring.ogg" id="6_x76wp"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
-[ext_resource type="AudioStream" uid="uid://0vlwuli0gwgl" path="res://audio/ost/perc_low.ogg" id="7_gm2qn"]
+[ext_resource type="AudioStream" uid="uid://cix3sf377jgjt" path="res://audio/ost/perc_low.ogg" id="7_gm2qn"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
-[ext_resource type="Texture2D" uid="uid://eayino5g15dr" path="res://visual/UI/croissant-120.png" id="7_hfh8a"]
-[ext_resource type="Texture2D" uid="uid://blxbxsr6j3alb" path="res://visual/UI/Temperature.png" id="7_ny5ov"]
-[ext_resource type="AudioStream" uid="uid://bucuwvr5dbuy0" path="res://audio/ost/perc_mid.ogg" id="8_53fho"]
+[ext_resource type="Texture2D" uid="uid://sucmg64vms10" path="res://visual/UI/croissant-120.png" id="7_hfh8a"]
+[ext_resource type="Texture2D" uid="uid://cegmajn0hsa84" path="res://visual/UI/Temperature.png" id="7_ny5ov"]
+[ext_resource type="AudioStream" uid="uid://dcopgd41ocuth" path="res://audio/ost/perc_mid.ogg" id="8_53fho"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
 [ext_resource type="Script" path="res://scripts/AudioStreamPlayer2DPercentage.gd" id="8_hbxqi"]
-[ext_resource type="Texture2D" uid="uid://ji3qovuvfum0" path="res://visual/UI/Temperature-Filled.png" id="8_tey1d"]
-[ext_resource type="AudioStream" uid="uid://b7mngnb3eroul" path="res://audio/ost/perc_high.ogg" id="9_h76kj"]
+[ext_resource type="Texture2D" uid="uid://b168i74peoa8e" path="res://visual/UI/Temperature-Filled.png" id="8_tey1d"]
+[ext_resource type="AudioStream" uid="uid://c22suy0pi8tgi" path="res://audio/ost/perc_high.ogg" id="9_h76kj"]
 [ext_resource type="Texture2D" uid="uid://nyjvlbcpnus3" path="res://visual/legacy/bite_bread_32.png" id="9_i2rol"]
-[ext_resource type="AudioStream" uid="uid://b4goui5eiyimu" path="res://audio/ost/perc_extreme.ogg" id="10_povob"]
+[ext_resource type="AudioStream" uid="uid://bcd6p5gphohmc" path="res://audio/ost/perc_extreme.ogg" id="10_povob"]
 [ext_resource type="PackedScene" uid="uid://pjc34hycabbm" path="res://scenes/pause.tscn" id="10_q2nwk"]
 [ext_resource type="Script" path="res://scripts/Player/Grabbed.gd" id="11_41njw"]
-[ext_resource type="Texture2D" uid="uid://cwmgbwpenoiow" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
+[ext_resource type="Texture2D" uid="uid://cld150c2rfvso" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
 [ext_resource type="Script" path="res://scripts/Toaster.gd" id="14_7eykj"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="14_fifg1"]
-[ext_resource type="AudioStream" uid="uid://d35fr85fxmmv6" path="res://audio/sfx/toast_but_toast.ogg" id="26_kni6m"]
-[ext_resource type="AudioStream" uid="uid://d3cji0yl7swsc" path="res://audio/sfx/toast_but_send.ogg" id="26_t5b6t"]
-[ext_resource type="AudioStream" uid="uid://7gkbg8uhnjf0" path="res://audio/sfx/toast_but_drop.ogg" id="29_dn4lw"]
+[ext_resource type="AudioStream" uid="uid://grn1mgcdm00g" path="res://audio/sfx/toast_but_toast.ogg" id="26_kni6m"]
+[ext_resource type="AudioStream" uid="uid://cvbc38lkaun27" path="res://audio/sfx/toast_but_send.ogg" id="26_t5b6t"]
+[ext_resource type="AudioStream" uid="uid://c71ulknhg5awd" path="res://audio/sfx/toast_but_drop.ogg" id="29_dn4lw"]
+[ext_resource type="Texture2D" uid="uid://b3ap5obrcs3gh" path="res://visual/sprites/toast_back.png" id="34_4ni4l"]
 [ext_resource type="Script" path="res://scenes/BreadSprite.gd" id="36_njpah"]
 
 [sub_resource type="Animation" id="Animation_au8v7"]
@@ -248,7 +249,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("ToasterFront:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -263,7 +264,7 @@ resource_name = "bread_consume"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("ToasterFront:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -278,7 +279,7 @@ resource_name = "bread_launch"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("ToasterFront:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -551,7 +552,7 @@ z_index = 1
 position = Vector2(580, 560)
 script = ExtResource("14_7eykj")
 
-[node name="Sprite2D" type="Sprite2D" parent="ObjectManager/Toaster"]
+[node name="ToasterFront" type="Sprite2D" parent="ObjectManager/Toaster"]
 scale = Vector2(0.147481, 0.147481)
 texture = ExtResource("8_dxmu3")
 hframes = 4
@@ -561,6 +562,11 @@ frame = 2
 libraries = {
 "": SubResource("AnimationLibrary_774qp")
 }
+
+[node name="ToasterBack" type="Sprite2D" parent="ObjectManager/Toaster"]
+z_index = -1
+scale = Vector2(0.147, 0.147)
+texture = ExtResource("34_4ni4l")
 
 [node name="Bread" type="RigidBody2D" parent="ObjectManager"]
 position = Vector2(900, 366)

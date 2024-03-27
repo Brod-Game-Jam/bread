@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://xqyt5cm8sigv"]
+[gd_scene load_steps=15 format=3 uid="uid://xqyt5cm8sigv"]
 
 [ext_resource type="Theme" uid="uid://svebvlnbqgyd" path="res://visual/UI/ui.tres" id="1_aw7sc"]
 [ext_resource type="Script" path="res://scripts/UI/MainMenu.gd" id="1_kbsxm"]
-[ext_resource type="AudioStream" uid="uid://baeuq54rdxhtn" path="res://audio/ost/menu_single_loop.ogg" id="2_h2h4s"]
-[ext_resource type="AudioStream" uid="uid://ds8ortfee2ahq" path="res://audio/sfx/bop.mp3" id="3_urhum"]
+[ext_resource type="AudioStream" uid="uid://cbti0tkbyxvuq" path="res://audio/ost/menu_single_loop.ogg" id="2_h2h4s"]
+[ext_resource type="AudioStream" uid="uid://04b2pdimdc41" path="res://audio/sfx/bop.mp3" id="3_urhum"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="4_q78hb"]
-[ext_resource type="Texture2D" uid="uid://bqgrewkf6q77b" path="res://visual/UI/Main-menu.png" id="7_1vjed"]
+[ext_resource type="Texture2D" uid="uid://748gg6gallxm" path="res://visual/UI/Main-menu.png" id="7_1vjed"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="7_658p8"]
 [ext_resource type="PackedScene" uid="uid://uy2vcwempyaw" path="res://scenes/options.tscn" id="9_ccilo"]
+[ext_resource type="Texture2D" uid="uid://b3ap5obrcs3gh" path="res://visual/sprites/toast_back.png" id="9_g8rnu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2uaf"]
 size = Vector2(92.25, 85.375)
@@ -17,7 +18,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("ToasterFront:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,7 +34,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("ToasterFront:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -48,7 +49,7 @@ resource_name = "bread_launch"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("ToasterFront:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -70,6 +71,7 @@ process_mode = 3
 script = ExtResource("1_kbsxm")
 
 [node name="Background" type="TextureRect" parent="."]
+z_index = -2
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("7_1vjed")
@@ -165,7 +167,7 @@ text = "Close"
 z_index = 1
 position = Vector2(555, 558)
 
-[node name="Sprite2D" type="Sprite2D" parent="Toaster"]
+[node name="ToasterFront" type="Sprite2D" parent="Toaster"]
 position = Vector2(-320, 34)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("7_658p8")
@@ -175,6 +177,12 @@ hframes = 4
 libraries = {
 "": SubResource("AnimationLibrary_774qp")
 }
+
+[node name="ToasterBack" type="Sprite2D" parent="Toaster"]
+z_index = -2
+position = Vector2(-320, 34)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_g8rnu")
 
 [connection signal="mouse_entered" from="Main/Container/Play" to="." method="_on_play_mouse_entered"]
 [connection signal="pressed" from="Main/Container/Play" to="." method="_on_play_pressed"]
