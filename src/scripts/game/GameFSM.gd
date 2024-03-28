@@ -9,7 +9,7 @@ var current_lives:int = 3
 
 @export var bread_size_coefficient:float
 
-@export var temperature_decrease_per_second:float = 10 #Should be exported to Airborne
+@export var temperature_decrease_per_second:float = 20 #Should be exported to Airborne
 
 @export var bread:Node2D
 @export var hand:Node2D

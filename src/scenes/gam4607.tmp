@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=64 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -32,7 +32,6 @@
 [ext_resource type="Texture2D" uid="uid://cw1an3ah2bue1" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
 [ext_resource type="Script" path="res://scripts/Toaster.gd" id="14_7eykj"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="14_fifg1"]
-[ext_resource type="Texture2D" uid="uid://dck7wgl5kjqcr" path="res://visual/sprites/bite_text.png" id="18_kw74d"]
 [ext_resource type="Texture2D" uid="uid://mkgnnbf37whk" path="res://visual/sprites/ouch_text.png" id="18_m0285"]
 [ext_resource type="AudioStream" uid="uid://5nndwa5c5pw0" path="res://audio/sfx/toast_but_toast.ogg" id="26_kni6m"]
 [ext_resource type="AudioStream" uid="uid://mi73hqjpwlr0" path="res://audio/sfx/toast_but_send.ogg" id="26_t5b6t"]
@@ -83,7 +82,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_67fr1"]
 resource_name = "Hurt"
-length = 1.2
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -91,10 +90,10 @@ tracks/0/path = NodePath("../Heat:pivot_offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.3001, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(3, 0), Vector2(2, 2), Vector2(10, 0), Vector2(2, 0)]
+"values": [Vector2(0, 0), Vector2(2, 2), Vector2(10, 0), Vector2(3, 0), Vector2(2, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -103,7 +102,7 @@ tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
@@ -115,34 +114,10 @@ tracks/2/path = NodePath("../Health:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.968627, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../OUCH:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath("../OUCH:pivot_offset")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(3, 0), Vector2(2, 2), Vector2(10, 0), Vector2(2, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xmhxn"]
@@ -479,39 +454,9 @@ mouse_filter = 1
 [node name="GUI" type="CanvasLayer" parent="VisualManager"]
 script = ExtResource("6_2vw2c")
 
-[node name="BITE" type="TextureRect" parent="VisualManager/GUI"]
-visible = false
-z_index = -2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -422.0
-offset_top = -235.0
-offset_right = 1298.0
-offset_bottom = 527.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("18_kw74d")
-
 [node name="OUCH" type="TextureRect" parent="VisualManager/GUI"]
-visible = false
-z_index = -2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -395.0
-offset_top = -240.0
-offset_right = 1287.0
-offset_bottom = 464.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(3, 0)
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("18_m0285")
 
 [node name="Health" type="VBoxContainer" parent="VisualManager/GUI"]
