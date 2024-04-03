@@ -13,6 +13,7 @@ config_version=5
 config/name="Bread"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
+boot_splash/image="res://visual/UI/Main-menu.png"
 config/icon="res://visual/legacy/bread_128.png"
 
 [audio]
