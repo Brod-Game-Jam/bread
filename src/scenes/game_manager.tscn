@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=64 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -13,29 +13,30 @@
 [ext_resource type="Script" path="res://scripts/player/Active.gd" id="6_8erbr"]
 [ext_resource type="Script" path="res://scripts/MusicManager.gd" id="6_32ivp"]
 [ext_resource type="Script" path="res://scripts/HandAnimation.gd" id="6_jxjrx"]
-[ext_resource type="AudioStream" uid="uid://by18dh7psbbf2" path="res://audio/ost/toaster_loop_boring.ogg" id="6_pudrb"]
-[ext_resource type="AudioStream" uid="uid://kjfot67w0rmk" path="res://audio/ost/airborne_loop_boring.ogg" id="6_x76wp"]
+[ext_resource type="AudioStream" uid="uid://c32l0khuucovn" path="res://audio/ost/toaster_loop_boring.ogg" id="6_pudrb"]
+[ext_resource type="AudioStream" uid="uid://ygdhgxnbp6b4" path="res://audio/ost/airborne_loop_boring.ogg" id="6_x76wp"]
 [ext_resource type="Texture2D" uid="uid://cyw8soms2x0h0" path="res://visual/legacy/bread.bmp" id="7_05pa5"]
-[ext_resource type="AudioStream" uid="uid://d0pj0uf5bi825" path="res://audio/ost/perc_low.ogg" id="7_gm2qn"]
+[ext_resource type="AudioStream" uid="uid://0vlwuli0gwgl" path="res://audio/ost/perc_low.ogg" id="7_gm2qn"]
 [ext_resource type="Script" path="res://scripts/Bread.gd" id="7_hdxja"]
-[ext_resource type="Texture2D" uid="uid://bxriboiidwjgd" path="res://visual/UI/croissant-120.png" id="7_hfh8a"]
-[ext_resource type="Texture2D" uid="uid://bw2o7nlldc5wd" path="res://visual/UI/Temperature.png" id="7_ny5ov"]
-[ext_resource type="AudioStream" uid="uid://ceatkgh14gakd" path="res://audio/ost/perc_mid.ogg" id="8_53fho"]
+[ext_resource type="Texture2D" uid="uid://eayino5g15dr" path="res://visual/UI/croissant-120.png" id="7_hfh8a"]
+[ext_resource type="Texture2D" uid="uid://blxbxsr6j3alb" path="res://visual/UI/Temperature.png" id="7_ny5ov"]
+[ext_resource type="AudioStream" uid="uid://bucuwvr5dbuy0" path="res://audio/ost/perc_mid.ogg" id="8_53fho"]
 [ext_resource type="Texture2D" uid="uid://d35rgdskr7i23" path="res://visual/sprites/toast.png" id="8_dxmu3"]
 [ext_resource type="Script" path="res://scripts/AudioStreamPlayer2DPercentage.gd" id="8_hbxqi"]
-[ext_resource type="Texture2D" uid="uid://dd6acriwg30kq" path="res://visual/UI/Temperature-Filled.png" id="8_tey1d"]
-[ext_resource type="AudioStream" uid="uid://rfqvbjn15eit" path="res://audio/ost/perc_high.ogg" id="9_h76kj"]
+[ext_resource type="Texture2D" uid="uid://ji3qovuvfum0" path="res://visual/UI/Temperature-Filled.png" id="8_tey1d"]
+[ext_resource type="AudioStream" uid="uid://b7mngnb3eroul" path="res://audio/ost/perc_high.ogg" id="9_h76kj"]
 [ext_resource type="Texture2D" uid="uid://nyjvlbcpnus3" path="res://visual/legacy/bite_bread_32.png" id="9_i2rol"]
-[ext_resource type="AudioStream" uid="uid://dljqwpbd3v1js" path="res://audio/ost/perc_extreme.ogg" id="10_povob"]
+[ext_resource type="AudioStream" uid="uid://b4goui5eiyimu" path="res://audio/ost/perc_extreme.ogg" id="10_povob"]
 [ext_resource type="PackedScene" uid="uid://pjc34hycabbm" path="res://scenes/pause.tscn" id="10_q2nwk"]
+[ext_resource type="Script" path="res://scripts/game/GameWinState.gd" id="10_uer8u"]
 [ext_resource type="Script" path="res://scripts/Player/Grabbed.gd" id="11_41njw"]
-[ext_resource type="Texture2D" uid="uid://cw1an3ah2bue1" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
+[ext_resource type="Texture2D" uid="uid://cwmgbwpenoiow" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
 [ext_resource type="Script" path="res://scripts/Toaster.gd" id="14_7eykj"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="14_fifg1"]
-[ext_resource type="AudioStream" uid="uid://5nndwa5c5pw0" path="res://audio/sfx/toast_but_toast.ogg" id="26_kni6m"]
-[ext_resource type="AudioStream" uid="uid://mi73hqjpwlr0" path="res://audio/sfx/toast_but_send.ogg" id="26_t5b6t"]
-[ext_resource type="AudioStream" uid="uid://cc6vd7ynirik" path="res://audio/sfx/toast_but_drop.ogg" id="29_dn4lw"]
-[ext_resource type="Texture2D" uid="uid://cbd6falk4gt7h" path="res://visual/sprites/toast_back.png" id="34_4ni4l"]
+[ext_resource type="AudioStream" uid="uid://d35fr85fxmmv6" path="res://audio/sfx/toast_but_toast.ogg" id="26_kni6m"]
+[ext_resource type="AudioStream" uid="uid://d3cji0yl7swsc" path="res://audio/sfx/toast_but_send.ogg" id="26_t5b6t"]
+[ext_resource type="AudioStream" uid="uid://7gkbg8uhnjf0" path="res://audio/sfx/toast_but_drop.ogg" id="29_dn4lw"]
+[ext_resource type="Texture2D" uid="uid://c16d8yvuaai41" path="res://visual/sprites/toast_back.png" id="34_4ni4l"]
 [ext_resource type="Script" path="res://scenes/BreadSprite.gd" id="36_njpah"]
 
 [sub_resource type="Animation" id="Animation_au8v7"]
@@ -337,14 +338,14 @@ size = Vector2(56, 787.5)
 
 [node name="GameManager" type="Node2D"]
 
-[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("bread", "hand", "toaster", "music_manager", "current_state")]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("bread", "hand", "toaster", "music_manager", "gui_manager", "current_state")]
 script = ExtResource("1_uk4h5")
-max_lives = 1
 bread_size_coefficient = 1.0
 bread = NodePath("../ObjectManager/Bread")
 hand = NodePath("../ObjectManager/Hand")
 toaster = NodePath("../ObjectManager/Toaster")
 music_manager = NodePath("../MusicManager")
+gui_manager = NodePath("../VisualManager/GUI")
 current_state = NodePath("Toasting")
 
 [node name="Start" type="Node" parent="FiniteStateMachine"]
@@ -381,6 +382,9 @@ script = ExtResource("8_hbxqi")
 
 [node name="Lose" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("5_6kj84")
+
+[node name="Win" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("10_uer8u")
 
 [node name="MusicManager" type="Node" parent="." node_paths=PackedStringArray("main_tracks", "sub_tracks")]
 script = ExtResource("6_32ivp")

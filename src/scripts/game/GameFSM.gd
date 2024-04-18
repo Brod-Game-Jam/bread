@@ -1,5 +1,7 @@
 extends FiniteStateMachine
 
+signal hurt
+
 @export var max_temperature:float = 200
 
 @export var max_lives:int = 3
@@ -15,6 +17,7 @@ var current_lives:int = 3
 @export var hand:Node2D
 @export var toaster:Node2D
 @export var music_manager:Node
+@export var gui_manager:Node
 
 func bread_is_edible () -> bool:
 	if bread.temperature < bread_temperature_edible_spectrum.y and \
@@ -37,12 +40,15 @@ func _ready():
 	bread.bread_dropped.connect(on_bread_dropped)
 	$Toasting.bread_started_heating.connect(on_bread_started_heating)
 	$Airborne.bread_sent_airborne.connect(on_sent_bread)
+	hurt.connect(gui_manager.hurt)
 	music_manager.start_playing()
 	bread.bread_bit.connect(on_bread_bit)
 	super._ready()
 
 func on_bread_bit():
-	music_manager.increase_pitch(0.1)
+	music_manager.increase_pitch(0.04)
+	if bread._get_bread_size() == 0:
+		_change_state($Win)
 
 func on_bread_started_heating ():
 	music_manager.switch_main_track(0)
@@ -63,6 +69,12 @@ func _process(delta):
 
 func on_bread_dropped():
 	bread.temperature = 0
+	if current_lives == 0:
+		_change_state($Lose)
+		bread.visible = false
+		return
 	if current_state == states[2]:
 		current_state._on_bread_dropped()
+		current_lives -= 1
+		hurt.emit()
 	

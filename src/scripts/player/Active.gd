@@ -5,6 +5,8 @@ signal pinch
 signal ouch
 
 @onready var grabbed_state:State = $"../Grabbed"
+@export var color_standard = Color.WHITE
+@export var color_grabbable = Color.AQUAMARINE
 
 var hand;
 var hand_speed = 5000
@@ -32,6 +34,9 @@ func _state_physics_update(_delta: float):
 	# move hand
 	mouse_pos = get_viewport().get_mouse_position()
 	hand.position = hand.position.move_toward(mouse_pos, _delta * hand_speed)
+	
+	#Debug: coloration of hand to see when grabbable
+	#$'../..'.modulate = color_grabbable if bread_near else color_standard
 	
 	if (Input.is_action_just_pressed("Strike") && bread_near):
 		# invert old velocity if going down
