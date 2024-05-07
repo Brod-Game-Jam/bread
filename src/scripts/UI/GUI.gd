@@ -29,5 +29,5 @@ func _process(delta):
 
 # Updates Health
 func update_health(value):
-	for i in value:
+	for i in 3:
 		$Health.get_child(i).visible = value > i

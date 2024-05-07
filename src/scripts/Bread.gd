@@ -47,6 +47,9 @@ func bite():
 	
 func _reset_bread():
 	reset_state = true
+
+func _get_bread_size():
+	return bread_chunks.size()
 	
 # Launch bread out of toaster
 func _toaster_expulsion():
