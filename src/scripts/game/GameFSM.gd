@@ -4,7 +4,7 @@ signal hurt
 
 @export var max_temperature:float = 200
 
-@export var max_lives:int = 3
+@export var max_lives:int = 1
 var current_lives:int = 3
 
 @export var bread_temperature_edible_spectrum = Vector2(30, 50)

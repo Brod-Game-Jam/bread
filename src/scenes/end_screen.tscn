@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://neo54k854eh1"]
+
+[ext_resource type="Script" path="res://scripts/UI/EndScreen.gd" id="1_1rtuh"]
+[ext_resource type="FontFile" uid="uid://dh6rs124bh0ob" path="res://visual/UI/JosefinSans-SemiBold.ttf" id="1_5gpbb"]
+[ext_resource type="Theme" uid="uid://svebvlnbqgyd" path="res://visual/UI/ui.tres" id="2_0n5qi"]
+[ext_resource type="Texture2D" uid="uid://cksjkr1qub3wa" path="res://visual/UI/Shinji-Bread.png" id="3_rixdg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_njqn7"]
+bg_color = Color(0.0313726, 0.0313726, 0.0313726, 0.815686)
+
+[node name="EndScreen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_1rtuh")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_njqn7")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_5gpbb")
+theme_override_font_sizes/font_size = 64
+text = "You Lose"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+theme = ExtResource("2_0n5qi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Bread" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_rixdg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="NewGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="MainMenu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back to Main Menu"
+
+[node name="Quit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit Game"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
