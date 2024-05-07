@@ -40,7 +40,7 @@ func _ready():
 	bread.bread_dropped.connect(on_bread_dropped)
 	$Toasting.bread_started_heating.connect(on_bread_started_heating)
 	$Airborne.bread_sent_airborne.connect(on_sent_bread)
-	hurt.connect(gui_manager.hurt)
+	hurt.connect(gui_manager._hurt)
 	music_manager.start_playing()
 	bread.bread_bit.connect(on_bread_bit)
 	super._ready()
