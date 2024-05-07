@@ -21,7 +21,7 @@ func _state_update(_delta: float):
 	elif (Input.is_action_just_pressed("Bite")):
 		hand.visible = false
 		emit_signal("bite")
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.3).timeout
 		release()
 		fsm._change_state(toasting_state)
 

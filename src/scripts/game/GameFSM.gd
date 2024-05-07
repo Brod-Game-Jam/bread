@@ -11,7 +11,7 @@ var current_lives:int = 3
 
 @export var bread_size_coefficient:float
 
-@export var temperature_decrease_per_second:float = 10 #Should be exported to Airborne
+@export var temperature_decrease_per_second:float = 20 #Should be exported to Airborne
 
 @export var bread:Node2D
 @export var hand:Node2D
@@ -40,7 +40,7 @@ func _ready():
 	bread.bread_dropped.connect(on_bread_dropped)
 	$Toasting.bread_started_heating.connect(on_bread_started_heating)
 	$Airborne.bread_sent_airborne.connect(on_sent_bread)
-	hurt.connect(gui_manager.hurt)
+	hurt.connect(gui_manager._hurt)
 	music_manager.start_playing()
 	bread.bread_bit.connect(on_bread_bit)
 	super._ready()

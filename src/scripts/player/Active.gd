@@ -28,7 +28,15 @@ func _exit_state():
 	pass
 
 func _state_update(_delta: float):
-	pass
+	if (Input.is_action_just_pressed("Grab") && bread_near):
+		if(fsm.bread_is_edible()):
+			emit_signal("pinch")
+			state_machine._change_state(grabbed_state)
+			# TODO: make it stand still
+		elif (fsm.bread_is_too_hot() && fsm.current_state.name != "Toasting"):
+			emit_signal("ouch")
+		elif (fsm.bread_is_too_cold()):
+			pass
 		
 func _state_physics_update(_delta: float):
 	# move hand
@@ -53,18 +61,6 @@ func _state_physics_update(_delta: float):
 		bread.apply_impulse(dir)
 		
 		emit_signal("strike", dir)
-		
-	if (Input.is_action_just_pressed("Grab") && bread_near):
-		if(fsm.bread_is_edible()):
-			emit_signal("pinch")
-			state_machine._change_state(grabbed_state)
-		elif (fsm.bread_is_too_hot()):
-			emit_signal("ouch")
-			# TODO: make it stand still
-			pass
-		elif (fsm.bread_is_too_cold()):
-			# TODO: something?
-			pass
 
 func _on_area_2d_body_entered(body):
 	bread_near = true;

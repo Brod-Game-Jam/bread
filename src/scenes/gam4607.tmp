@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dtthp3571n54c"]
+[gd_scene load_steps=64 format=3 uid="uid://dtthp3571n54c"]
 
 [ext_resource type="Script" path="res://scripts/game/GameFSM.gd" id="1_uk4h5"]
 [ext_resource type="Script" path="res://scripts/imported/StateMachine/State.gd" id="2_8cem0"]
@@ -28,12 +28,10 @@
 [ext_resource type="Texture2D" uid="uid://nyjvlbcpnus3" path="res://visual/legacy/bite_bread_32.png" id="9_i2rol"]
 [ext_resource type="AudioStream" uid="uid://dljqwpbd3v1js" path="res://audio/ost/perc_extreme.ogg" id="10_povob"]
 [ext_resource type="PackedScene" uid="uid://pjc34hycabbm" path="res://scenes/pause.tscn" id="10_q2nwk"]
-[ext_resource type="Script" path="res://scripts/game/GameWinState.gd" id="10_uer8u"]
 [ext_resource type="Script" path="res://scripts/Player/Grabbed.gd" id="11_41njw"]
 [ext_resource type="Texture2D" uid="uid://cw1an3ah2bue1" path="res://visual/sprites/combined_hand_sheet_2.png" id="13_hrxyt"]
 [ext_resource type="Script" path="res://scripts/Toaster.gd" id="14_7eykj"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="14_fifg1"]
-[ext_resource type="Texture2D" uid="uid://dck7wgl5kjqcr" path="res://visual/sprites/bite_text.png" id="18_kw74d"]
 [ext_resource type="Texture2D" uid="uid://mkgnnbf37whk" path="res://visual/sprites/ouch_text.png" id="18_m0285"]
 [ext_resource type="AudioStream" uid="uid://5nndwa5c5pw0" path="res://audio/sfx/toast_but_toast.ogg" id="26_kni6m"]
 [ext_resource type="AudioStream" uid="uid://mi73hqjpwlr0" path="res://audio/sfx/toast_but_send.ogg" id="26_t5b6t"]
@@ -84,7 +82,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_67fr1"]
 resource_name = "Hurt"
-length = 0.8
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -92,10 +90,10 @@ tracks/0/path = NodePath("../Heat:pivot_offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.3001, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(3, 0), Vector2(2, 2), Vector2(10, 0), Vector2(2, 0)]
+"values": [Vector2(0, 0), Vector2(2, 2), Vector2(10, 0), Vector2(3, 0), Vector2(2, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -104,7 +102,7 @@ tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
@@ -116,34 +114,10 @@ tracks/2/path = NodePath("../Health:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.968627, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../OUCH:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath("../OUCH:pivot_offset")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(3, 0), Vector2(2, 2), Vector2(10, 0), Vector2(2, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xmhxn"]
@@ -376,14 +350,14 @@ size = Vector2(56, 787.5)
 
 [node name="GameManager" type="Node2D"]
 
-[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("bread", "hand", "toaster", "music_manager", "gui_manager", "current_state")]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("bread", "hand", "toaster", "music_manager", "current_state")]
 script = ExtResource("1_uk4h5")
+max_lives = 1
 bread_size_coefficient = 1.0
 bread = NodePath("../ObjectManager/Bread")
 hand = NodePath("../ObjectManager/Hand")
 toaster = NodePath("../ObjectManager/Toaster")
 music_manager = NodePath("../MusicManager")
-gui_manager = NodePath("../VisualManager/GUI")
 current_state = NodePath("Toasting")
 
 [node name="Start" type="Node" parent="FiniteStateMachine"]
@@ -420,9 +394,6 @@ script = ExtResource("8_hbxqi")
 
 [node name="Lose" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("5_6kj84")
-
-[node name="Win" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("10_uer8u")
 
 [node name="MusicManager" type="Node" parent="." node_paths=PackedStringArray("main_tracks", "sub_tracks")]
 process_mode = 3
@@ -483,42 +454,9 @@ mouse_filter = 1
 [node name="GUI" type="CanvasLayer" parent="VisualManager"]
 script = ExtResource("6_2vw2c")
 
-[node name="BITE" type="TextureRect" parent="VisualManager/GUI"]
-visible = false
-z_index = -1
-z_as_relative = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 1144.0
-offset_bottom = 438.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.1, 0.1)
-pivot_offset = Vector2(-100, -100)
-texture = ExtResource("18_kw74d")
-
 [node name="OUCH" type="TextureRect" parent="VisualManager/GUI"]
-visible = false
-z_index = -1
-z_as_relative = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 1106.0
-offset_bottom = 380.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.1, 0.1)
-pivot_offset = Vector2(-90, -110)
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("18_m0285")
 
 [node name="Health" type="VBoxContainer" parent="VisualManager/GUI"]
@@ -575,7 +513,7 @@ offset_right = 199.0
 offset_bottom = 1278.0
 grow_vertical = 2
 scale = Vector2(0.48, 0.48)
-pivot_offset = Vector2(3, 0)
+pivot_offset = Vector2(2, 0)
 max_value = 200.0
 step = 0.5
 value = 30.0
