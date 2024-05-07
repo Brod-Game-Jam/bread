@@ -84,7 +84,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_67fr1"]
 resource_name = "Hurt"
-length = 1.2
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -128,7 +128,7 @@ tracks/3/path = NodePath("../OUCH:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.2),
+"times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -485,36 +485,40 @@ script = ExtResource("6_2vw2c")
 
 [node name="BITE" type="TextureRect" parent="VisualManager/GUI"]
 visible = false
-z_index = -2
+z_index = -1
+z_as_relative = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -422.0
-offset_top = -235.0
-offset_right = 1298.0
-offset_bottom = 527.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 1144.0
+offset_bottom = 438.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(-100, -100)
 texture = ExtResource("18_kw74d")
 
 [node name="OUCH" type="TextureRect" parent="VisualManager/GUI"]
-z_index = -2
+visible = false
+z_index = -1
+z_as_relative = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -395.0
-offset_top = -240.0
-offset_right = 1287.0
-offset_bottom = 464.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 1106.0
+offset_bottom = 380.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(3, 0)
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(-90, -110)
 texture = ExtResource("18_m0285")
 
 [node name="Health" type="VBoxContainer" parent="VisualManager/GUI"]
